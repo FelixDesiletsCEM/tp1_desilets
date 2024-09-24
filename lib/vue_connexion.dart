@@ -1,17 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:tp1_desilets/ecran_inscription.dart';
+import 'package:tp1_desilets/vue_inscription.dart';
 import 'package:tp1_desilets/http/service.dart';
 import 'package:tp1_desilets/transfer/account.dart';
-import 'package:tp1_desilets/vueAccueil.dart';
-import 'tiroir_nav.dart';
-import 'package:tp1_desilets/transfer/account.dart';
+import 'package:tp1_desilets/vue_accueil.dart';
 void main() {
-  runApp(const MyApp());
+  runApp(const ConnexionPage());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class ConnexionPage extends StatelessWidget {
+  const ConnexionPage({super.key});
 
   // This widget is the root of your application.
   @override
@@ -52,17 +50,17 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             TextField(
               controller: usernameTextController,
-              decoration: new InputDecoration(hintText: "Username")
+              decoration: const InputDecoration(hintText: "Username")
             ),
             TextField(
                 controller: passwordTextController,
-                decoration: new InputDecoration(hintText: "Password")
+                decoration: const InputDecoration(hintText: "Password")
             ),
             TextButton(
                 onPressed: () async {
                    {
                     try {
-                      SigninRequest request = new SigninRequest();
+                      SigninRequest request = SigninRequest();
                       request.username = usernameTextController.text;
                       request.password = passwordTextController.text;
                       var reponse = await signin(request);
@@ -80,17 +78,17 @@ class _MyHomePageState extends State<MyHomePage> {
                       builder: (context) => const AccueilPage(title: "Accueil"),
                     ),
                   );},
-                child: Text("Connexion")
+                child: const Text("Connexion")
             ),
             TextButton(
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const ecran_inscription(title: "Inscription"),
+                      builder: (context) => const InscriptionPage(title: "Inscription"),
                     ),
                   );},
-                child: Text("Inscription")
+                child: const Text("Inscription")
             ),
           ],
         ),

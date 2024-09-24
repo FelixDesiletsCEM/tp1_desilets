@@ -1,9 +1,9 @@
-import 'dart:io';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:tp1_desilets/transfer/account.dart';
 import 'package:tp1_desilets/transfer/task.dart';
+
 const String baseUrl = 'https://desilets-kickmyb-server.onrender.com';
 
 
@@ -90,7 +90,7 @@ Future<String> addTask(AddTaskRequest request) async
   }
   catch(e){
     print(e);
-    throw(e);
+    rethrow;
   }
 }
 
@@ -105,7 +105,7 @@ Future<String> editTask(ProgressEvent request) async
   }
   catch(e){
     print(e);
-    throw(e);
+    rethrow;
   }
 }
 //#endregion

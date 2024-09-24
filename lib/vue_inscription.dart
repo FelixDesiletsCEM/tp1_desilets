@@ -1,20 +1,20 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:tp1_desilets/transfer/account.dart';
-import 'package:tp1_desilets/vueAccueil.dart';
+import 'package:tp1_desilets/vue_accueil.dart';
 
 import 'http/service.dart';
 
-class ecran_inscription extends StatefulWidget {
-  const ecran_inscription({super.key, required this.title});
+class InscriptionPage extends StatefulWidget {
+  const InscriptionPage({super.key, required this.title});
 
   final String title;
 
   @override
-  State<ecran_inscription> createState() => _MyHomePageState();
+  State<InscriptionPage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<ecran_inscription> {
+class _MyHomePageState extends State<InscriptionPage> {
   final usernameTextController = TextEditingController();
   final passwordTextController = TextEditingController();
   @override
@@ -28,15 +28,15 @@ class _MyHomePageState extends State<ecran_inscription> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("Inscription"),
-            TextField(decoration: new InputDecoration.collapsed(hintText: 'Nom d\'utilisateur'), controller: usernameTextController,),
-            TextField(decoration: new InputDecoration.collapsed(hintText: 'Mot de passe'), controller: passwordTextController,),
-            TextField(decoration: new InputDecoration.collapsed(hintText: 'Confirmer le mot de passe'),),
+            const Text("Inscription"),
+            TextField(decoration: const InputDecoration.collapsed(hintText: 'Nom d\'utilisateur'), controller: usernameTextController,),
+            TextField(decoration: const InputDecoration.collapsed(hintText: 'Mot de passe'), controller: passwordTextController,),
+            TextField(decoration: const InputDecoration.collapsed(hintText: 'Confirmer le mot de passe'),),
             TextButton(
                 onPressed: () async {/*Faire requête http puis aller à l'accueil.*/
                   {
                     try {
-                      SignupRequest request = new SignupRequest();
+                      SignupRequest request = SignupRequest();
                       request.username = usernameTextController.text;
                       request.password = passwordTextController.text;
                       var reponse = await signup(request);
@@ -54,7 +54,7 @@ class _MyHomePageState extends State<ecran_inscription> {
                       builder: (context) => const AccueilPage(title: "Accueil"),
                     ),
                   );},
-                child: Text("Inscription")
+                child: const Text("Inscription")
             ),
           ],
         ),

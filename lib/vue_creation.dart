@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:tp1_desilets/transfer/task.dart';
-import 'package:tp1_desilets/vueAccueil.dart';
+import 'package:tp1_desilets/vue_accueil.dart';
 import 'tiroir_nav.dart';
 import 'package:tp1_desilets/http/service.dart';
 class CreationPage extends StatefulWidget {
@@ -30,12 +30,12 @@ class _CreationPage extends State<CreationPage> {
           children: <Widget>[
             TextField(
               controller: tasknameTextController, 
-              decoration: new InputDecoration(hintText: "Task name")
+              decoration: const InputDecoration(hintText: "Task name")
             ),
             TextButton(
                 onPressed: () async {/*Requête puis écran accueil*/
                   try {
-                    AddTaskRequest request = new AddTaskRequest();
+                    AddTaskRequest request = AddTaskRequest();
                     request.name = "testName";
                     request.deadline = DateTime(2024,10, 10, 0, 0, 0);
                     var reponse = await addTask(request);
@@ -50,7 +50,7 @@ class _CreationPage extends State<CreationPage> {
                       builder: (context) => const AccueilPage(title: "Accueil"),
                     ),
                   );},
-                child: Text("Add task")
+                child: const Text("Add task")
             )
           ],
         ),

@@ -1,13 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:tp1_desilets/http/service.dart';
-import 'package:tp1_desilets/main.dart';
-import 'package:tp1_desilets/main.dart';
-import 'package:tp1_desilets/vueAccueil.dart';
-import 'package:tp1_desilets/vueConsultation.dart';
-import 'package:tp1_desilets/vueCreation.dart';
-
-import 'vueCreation.dart';
+import 'package:tp1_desilets/vue_connexion.dart';
+import 'package:tp1_desilets/vue_accueil.dart';
+import 'package:tp1_desilets/vue_creation.dart';
 
 class LeTiroir extends StatefulWidget {
   const LeTiroir({super.key});

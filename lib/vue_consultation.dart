@@ -27,17 +27,17 @@ class _ConsultationPage extends State<ConsultationPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('Nom de la tache:' + '${widget.task.name}'),
-            Text("La date d'échéance" + '${widget.task.deadline}'),
-            Text("Pourcentage de complétion:" + '${widget.task.percentageDone }'),
-            Text("Pourcentage du temps écoulé"),
+            Text('Nom de la tache:${widget.task.name}'),
+            Text("La date d'échéance ${widget.task.name}"),
+            Text("Pourcentage de complétion: ${widget.task.percentageDone}"),
+            Text("Pourcentage du temps écoulé: ${widget.task.percentageDone}"),
             TextField(
                 controller: pourcentageTextController,
-                decoration: new InputDecoration(hintText: "Nouveau Pourcentage")
+                decoration: const InputDecoration(hintText: "Nouveau Pourcentage")
             ),
             TextButton(onPressed: ()async{
               try {
-                ProgressEvent request = new ProgressEvent();
+                ProgressEvent request = ProgressEvent();
                 request.value = int.parse(pourcentageTextController.text);
                 request.timestamp = DateTime.now();
                 var reponse = await editTask(request);
@@ -48,7 +48,7 @@ class _ConsultationPage extends State<ConsultationPage> {
                 ScaffoldMessenger.of(context)
                     .showSnackBar(const SnackBar(content: Text('Erreur reseau')));
               }
-            }, child: Text("Modifier la tache"))
+            }, child: const Text("Modifier la tache"))
           ],
         ),
       ),

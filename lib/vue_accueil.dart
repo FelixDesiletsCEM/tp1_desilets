@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tp1_desilets/transfer/task.dart';
-import 'package:tp1_desilets/vueConsultation.dart';
+import 'package:tp1_desilets/vue_consultation.dart';
 import 'http/service.dart';
 import 'tiroir_nav.dart';
 class AccueilPage extends StatefulWidget {
@@ -54,7 +54,7 @@ class _PageAccueil extends State<AccueilPage> {
                   getListe();
                   setState(() {});
                   },
-                child: Text("Actualiser la liste")),
+                child: const Text("Actualiser la liste")),
             SizedBox(
               height: 200.0,
               child: ListView.builder(
@@ -68,7 +68,7 @@ class _PageAccueil extends State<AccueilPage> {
                       ),
                     );},
                     leading: Text(tasks[index].name.toString()),
-                    title: Text(tasks[index].deadline.toString()),
+                    title: Text(tasks[index].name.toString()),
                     trailing: Text(tasks[index].percentageDone.toString()),
                   );
                 },
