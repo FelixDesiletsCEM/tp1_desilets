@@ -1,13 +1,14 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tp1_desilets/http/service.dart';
 import 'tiroir_nav.dart';
 import 'package:tp1_desilets/transfer/task.dart';
-
+import 'generated/l10n.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 class ConsultationPage extends StatefulWidget {
-  const ConsultationPage({super.key, required this.title, required this.task});
+  const ConsultationPage({super.key, required this.task});
 
-  final String title;
   final HomeItemResponse task;
   @override
   State<ConsultationPage> createState() => _ConsultationPage();
@@ -21,7 +22,7 @@ class _ConsultationPage extends State<ConsultationPage> {
       drawer: const LeTiroir(),
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: Text(S.of(context).pageConsultationTitre),
       ),
       body: Center(
         child: Column(
@@ -41,12 +42,13 @@ class _ConsultationPage extends State<ConsultationPage> {
                 request.value = int.parse(pourcentageTextController.text);
                 request.timestamp = DateTime.now();
                 var reponse = await editTask(request);
-                print(reponse);
+                if (kDebugMode) {
+                  print(reponse);
+                }
               } on DioException catch (e) {
                 String message = e.response.toString();
-                print(message);
                 ScaffoldMessenger.of(context)
-                    .showSnackBar(const SnackBar(content: Text('Erreur reseau')));
+                    .showSnackBar(const SnackBar(content: Text("E")));
               }
             }, child: const Text("Modifier la tache"))
           ],

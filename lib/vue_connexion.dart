@@ -1,9 +1,12 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tp1_desilets/vue_inscription.dart';
 import 'package:tp1_desilets/http/service.dart';
 import 'package:tp1_desilets/transfer/account.dart';
 import 'package:tp1_desilets/vue_accueil.dart';
+import 'generated/l10n.dart';
 void main() {
   runApp(const ConnexionPage());
 }
@@ -15,20 +18,25 @@ class ConnexionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: S.delegate.supportedLocales,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -42,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: Text(S.of(context).pageConnexionTitre),
       ),
       body: Center(
         child: Column(
@@ -50,11 +58,11 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             TextField(
               controller: usernameTextController,
-              decoration: const InputDecoration(hintText: "Username")
+              decoration: InputDecoration(hintText: S.of(context).pageConnexionConnexion)
             ),
             TextField(
                 controller: passwordTextController,
-                decoration: const InputDecoration(hintText: "Password")
+                decoration: InputDecoration(hintText: S.of(context).pageConnexionInscription)
             ),
             TextButton(
                 onPressed: () async {
@@ -64,10 +72,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       request.username = usernameTextController.text;
                       request.password = passwordTextController.text;
                       var reponse = await signin(request);
-                      print(reponse);
+                      if (kDebugMode) {
+                        print(reponse);
+                      }
                     } on DioException catch (e) {
                       String message = e.response.toString();
-                      print(message + "HAHAHAHAHA");
+                      if (kDebugMode) {
+                        print(message);
+                      }
                       ScaffoldMessenger.of(context)
                           .showSnackBar(const SnackBar(content: Text('Erreur reseau')));
                     }
@@ -75,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const AccueilPage(title: "Accueil"),
+                      builder: (context) => const AccueilPage(),
                     ),
                   );},
                 child: const Text("Connexion")
@@ -85,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const InscriptionPage(title: "Inscription"),
+                      builder: (context) => const InscriptionPage(),
                     ),
                   );},
                 child: const Text("Inscription")

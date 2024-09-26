@@ -1,13 +1,15 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tp1_desilets/transfer/task.dart';
 import 'package:tp1_desilets/vue_accueil.dart';
 import 'tiroir_nav.dart';
 import 'package:tp1_desilets/http/service.dart';
+import 'generated/l10n.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 class CreationPage extends StatefulWidget {
-  const CreationPage({super.key, required this.title});
+  const CreationPage({super.key});
 
-  final String title;
 
   @override
   State<CreationPage> createState() => _CreationPage();
@@ -22,7 +24,7 @@ class _CreationPage extends State<CreationPage> {
       drawer: const LeTiroir(),
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: Text(S.of(context).pageCreationTitre),
       ),
       body: Center(
         child: Column(
@@ -39,15 +41,19 @@ class _CreationPage extends State<CreationPage> {
                     request.name = "testName";
                     request.deadline = DateTime(2024,10, 10, 0, 0, 0);
                     var reponse = await addTask(request);
-                    print(reponse);
+                    if (kDebugMode) {
+                      print(reponse);
+                    }
                   } on DioException catch (e) {
                     String message = e.response.toString();
-                    print(message + "HAHAHAHAHA");
+                    if (kDebugMode) {
+                      print(message);
+                    }
                   }
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const AccueilPage(title: "Accueil"),
+                      builder: (context) => const AccueilPage(),
                     ),
                   );},
                 child: const Text("Add task")

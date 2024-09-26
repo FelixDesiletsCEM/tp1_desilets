@@ -1,14 +1,14 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tp1_desilets/transfer/account.dart';
 import 'package:tp1_desilets/vue_accueil.dart';
-
 import 'http/service.dart';
+import 'generated/l10n.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class InscriptionPage extends StatefulWidget {
-  const InscriptionPage({super.key, required this.title});
-
-  final String title;
+  const InscriptionPage({super.key});
 
   @override
   State<InscriptionPage> createState() => _MyHomePageState();
@@ -22,16 +22,16 @@ class _MyHomePageState extends State<InscriptionPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: Text(S.of(context).pageInscriptionTitre),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text("Inscription"),
-            TextField(decoration: const InputDecoration.collapsed(hintText: 'Nom d\'utilisateur'), controller: usernameTextController,),
-            TextField(decoration: const InputDecoration.collapsed(hintText: 'Mot de passe'), controller: passwordTextController,),
-            TextField(decoration: const InputDecoration.collapsed(hintText: 'Confirmer le mot de passe'),),
+            TextField(decoration: const InputDecoration(hintText: 'Nom d\'utilisateur'), controller: usernameTextController,),
+            TextField(decoration: const InputDecoration(hintText: 'Mot de passe'), controller: passwordTextController,),
+            TextField(decoration: const InputDecoration(hintText: 'Confirmer le mot de passe'),),
             TextButton(
                 onPressed: () async {/*Faire requête http puis aller à l'accueil.*/
                   {
@@ -40,10 +40,14 @@ class _MyHomePageState extends State<InscriptionPage> {
                       request.username = usernameTextController.text;
                       request.password = passwordTextController.text;
                       var reponse = await signup(request);
-                      print(reponse);
+                      if (kDebugMode) {
+                        print(reponse);
+                      }
                     } on DioException catch (e) {
                       String message = e.response.toString();
-                      print(message + "HAHAHAHAHA");
+                      if (kDebugMode) {
+                        print(message);
+                      }
                       ScaffoldMessenger.of(context)
                           .showSnackBar(const SnackBar(content: Text('Erreur reseau')));
                     }
@@ -51,7 +55,7 @@ class _MyHomePageState extends State<InscriptionPage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const AccueilPage(title: "Accueil"),
+                      builder: (context) => const AccueilPage(),
                     ),
                   );},
                 child: const Text("Inscription")

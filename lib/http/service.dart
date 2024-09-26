@@ -1,9 +1,10 @@
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:tp1_desilets/transfer/account.dart';
 import 'package:tp1_desilets/transfer/task.dart';
-
+import 'package:logging/logging.dart';
 const String baseUrl = 'https://desilets-kickmyb-server.onrender.com';
 
 
@@ -21,9 +22,15 @@ class SingletonDio {
 Future<SigninResponse> signup(SignupRequest req) async
 {
   try {
-    var response = await SingletonDio.getDio().post(baseUrl + '/api/id/signup',
+    var response = await SingletonDio.getDio().post('$baseUrl/api/id/signup',
         data: req,
         options: Options(contentType: Headers.jsonContentType));
+
+    /*Logger.root.onRecord.listen((record) {
+      if (kDebugMode) {
+        print('${record.level.name}: ${record.time}: ${record.message}');
+      }
+    });*/
     print(response);
     return SigninResponse.fromJson(response.data);
   }
@@ -36,7 +43,7 @@ Future<SigninResponse> signup(SignupRequest req) async
 Future<SigninResponse> signin(SigninRequest req) async
 {
   try {
-    var response = await SingletonDio.getDio().post(baseUrl + '/api/id/signin',
+    var response = await SingletonDio.getDio().post('$baseUrl/api/id/signin',
         data: req,
         options: Options(contentType: Headers.jsonContentType));
     print(response);
@@ -51,7 +58,7 @@ Future<SigninResponse> signin(SigninRequest req) async
 Future<String> signout() async
 {
   try {
-    var response = await SingletonDio.getDio().post(baseUrl + '/api/id/signout',
+    var response = await SingletonDio.getDio().post('$baseUrl/api/id/signout',
         options: Options(contentType: Headers.jsonContentType));
     print(response);
     return response.toString();
@@ -66,7 +73,7 @@ Future<String> signout() async
 //#region Tâches
 Future<List<HomeItemResponse>> home() async {
   try {
-    var response = await SingletonDio.getDio().get('https://desilets-kickmyb-server.onrender.com/api/home');
+    var response = await SingletonDio.getDio().get('$baseUrl/api/home');
     print(response);
     var listeJSON = response.data as List;
     var listeTasks = listeJSON.map((elementJSON) {
@@ -75,14 +82,14 @@ Future<List<HomeItemResponse>> home() async {
     return listeTasks;
   } catch (e) {
     print(e);
-    throw (e);
+    rethrow;
   }
 }
 
 Future<String> addTask(AddTaskRequest request) async
 {
   try{
-    var response = await Dio().post(baseUrl + '/api/add',
+    var response = await Dio().post('$baseUrl/api/add',
     data: request,
     options: Options(contentType: Headers.jsonContentType));
     print(response);
@@ -97,10 +104,10 @@ Future<String> addTask(AddTaskRequest request) async
 Future<String> editTask(ProgressEvent request) async
 {
   try{
-    var response = await SingletonDio.getDio().post(baseUrl + '/api/progress/{taskID}/{value}',
+    var response = await SingletonDio.getDio().post('$baseUrl/api/progress/{taskID}/{value}',
         data: request,
         options: Options(contentType: Headers.jsonContentType));
-    print(response);
+      print(response);
     return response.toString();
   }
   catch(e){
