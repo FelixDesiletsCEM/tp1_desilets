@@ -11,10 +11,10 @@ class InscriptionPage extends StatefulWidget {
   const InscriptionPage({super.key});
 
   @override
-  State<InscriptionPage> createState() => _MyHomePageState();
+  State<InscriptionPage> createState() => _InscriptionPageState();
 }
 
-class _MyHomePageState extends State<InscriptionPage> {
+class _InscriptionPageState extends State<InscriptionPage> {
   final usernameTextController = TextEditingController();
   final passwordTextController = TextEditingController();
   @override
@@ -28,7 +28,7 @@ class _MyHomePageState extends State<InscriptionPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text("Inscription"),
+            Text(S.of(context).pageInscriptionTitre),
             TextField(decoration: const InputDecoration(hintText: 'Nom d\'utilisateur'), controller: usernameTextController,),
             TextField(decoration: const InputDecoration(hintText: 'Mot de passe'), controller: passwordTextController,),
             TextField(decoration: const InputDecoration(hintText: 'Confirmer le mot de passe'),),
@@ -58,7 +58,7 @@ class _MyHomePageState extends State<InscriptionPage> {
                       builder: (context) => const AccueilPage(),
                     ),
                   );},
-                child: const Text("Inscription")
+                child: Text(S.of(context).pageInscriptionTitre)
             ),
           ],
         ),

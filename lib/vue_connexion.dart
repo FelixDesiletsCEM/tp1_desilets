@@ -6,6 +6,7 @@ import 'package:tp1_desilets/vue_inscription.dart';
 import 'package:tp1_desilets/http/service.dart';
 import 'package:tp1_desilets/transfer/account.dart';
 import 'package:tp1_desilets/vue_accueil.dart';
+import 'package:tp1_desilets/widgets/bouton_navigation.dart';
 import 'generated/l10n.dart';
 void main() {
   runApp(const ConnexionPage());
@@ -25,7 +26,7 @@ class ConnexionPage extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
-      title: 'Flutter Demo',
+      title: S.of(context).pageConnexionTitre,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -92,16 +93,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   );},
                 child: const Text("Connexion")
             ),
-            TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const InscriptionPage(),
-                    ),
-                  );},
-                child: const Text("Inscription")
-            ),
+            bouton_navigation(texte: "Inscription", targetPage: MaterialPageRoute(
+              builder: (context) => const InscriptionPage(),),),
           ],
         ),
       ),

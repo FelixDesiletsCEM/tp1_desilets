@@ -1,14 +1,10 @@
 {
-  "pageAccueilTitre": "Accueil",
-  "pageAccueilActualiserListe": "Actualiser la liste",
-
   "pageConnexionTitre": "Connexion",
   "pageConnexionConnexion": "Se connecter",
   "pageConnexionInscription": "S'inscrire",
-
+  "pageAccueilTitre": "Accueil",
+  "pageAccueilActualiserListe": "Actualiser la liste",
   "pageConsultationTitre": "Consultation",
-
   "pageCreationTitre": "Creation",
-
   "pageInscriptionTitre": "Inscription"
 }

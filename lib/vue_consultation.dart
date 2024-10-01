@@ -48,7 +48,7 @@ class _ConsultationPage extends State<ConsultationPage> {
               } on DioException catch (e) {
                 String message = e.response.toString();
                 ScaffoldMessenger.of(context)
-                    .showSnackBar(const SnackBar(content: Text("E")));
+                    .showSnackBar(const SnackBar(content: Text("Il faut mettre le message ici.")));
               }
             }, child: const Text("Modifier la tache"))
           ],

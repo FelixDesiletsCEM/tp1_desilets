@@ -4,7 +4,8 @@ import 'package:tp1_desilets/http/service.dart';
 import 'package:tp1_desilets/vue_connexion.dart';
 import 'package:tp1_desilets/vue_accueil.dart';
 import 'package:tp1_desilets/vue_creation.dart';
-
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'generated/l10n.dart';
 class LeTiroir extends StatefulWidget {
   const LeTiroir({super.key});
 
@@ -22,6 +23,7 @@ class LeTiroirState extends State<LeTiroir> {
           height: 200,
 
         ),
+        //TODO Prendre le nom pour de vrai. Surement créer un singleton lors du login?
         Text("Nom de l'utilisateur connecté"),
         ListTile(
           dense: true,
@@ -40,15 +42,14 @@ class LeTiroirState extends State<LeTiroir> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const MyHomePage(title: "Connexion"),
+                builder: (context) => const MyHomePage(),
               ),
             );
             // Then close the drawer
           },
         ),
 
-        // TODO le tiroir de navigation ne peut pointer que vers des
-        // ecran sans paramtre.
+        // TODO le tiroir de navigation ne peut pointer que vers des ecran sans paramètre.
         ListTile(
           dense: true,
           leading: const Icon(Icons.ac_unit),
@@ -58,7 +59,7 @@ class LeTiroirState extends State<LeTiroir> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const CreationPage(title: "Creation"),
+                builder: (context) => const CreationPage(),
               ),
             );
             // Then close the drawer
@@ -67,13 +68,13 @@ class LeTiroirState extends State<LeTiroir> {
         ListTile(
           dense: true,
           leading: const Icon(Icons.ac_unit),
-          title: const Text("Accueil"),
+          title: Text(S.of(context).pageAccueilTitre),
           onTap: () {
             Navigator.of(context).pop();
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const AccueilPage(title: "Accueil"),
+                builder: (context) => const AccueilPage(),
               ),
             );
             // Then close the drawer
