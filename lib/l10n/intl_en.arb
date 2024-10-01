@@ -1,10 +1,20 @@
 {
-  "pageConnexionTitre": "Connexion",
-  "pageConnexionConnexion": "Se connecter",
-  "pageConnexionInscription": "S'inscrire",
-  "pageAccueilTitre": "Accueil",
-  "pageAccueilActualiserListe": "Actualiser la liste",
+  "pageAccueilTitre": "Home",
+  "pageAccueilActualiserListe": "Refresh the list",
+
+  "pageConnexionTitre": "Connection",
+  "pageConnexionConnexion": "Sign in",
+  "pageConnexionInscription": "Sign up",
+
   "pageConsultationTitre": "Consultation",
+  "pageConsultationModifier": "Edit the task",
+  "pageConsultationNouvelleValeur": "New percentage",
+  "pageConsultationNomTache": "Task name",
+  "pageConsultationEcheance": "Deadline",
+  "pageConsultationPourcentageCompletion": "Percentage of completion: ",
+  "pageConsultationPourcentageTemps": "Percentage of elpapsed time: ",
+
   "pageCreationTitre": "Creation",
+
   "pageInscriptionTitre": "Inscription"
 }

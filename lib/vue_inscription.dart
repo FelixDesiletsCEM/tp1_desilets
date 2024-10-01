@@ -19,6 +19,7 @@ class _InscriptionPageState extends State<InscriptionPage> {
   final passwordTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,

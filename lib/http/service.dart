@@ -26,12 +26,12 @@ Future<SigninResponse> signup(SignupRequest req) async
         data: req,
         options: Options(contentType: Headers.jsonContentType));
 
-    /*Logger.root.onRecord.listen((record) {
+    Logger.root.onRecord.listen((record) {
       if (kDebugMode) {
-        print('${record.level.name}: ${record.time}: ${record.message}');
+        print('${record.level.name}: ${record.time}: ${record.message} test');
       }
-    });*/
-    print(response);
+    });
+    //print(response);
     return SigninResponse.fromJson(response.data);
   }
   catch (e){

@@ -16,6 +16,7 @@ class LeTiroir extends StatefulWidget {
 class LeTiroirState extends State<LeTiroir> {
   @override
   Widget build(BuildContext context) {
+
     var listView = ListView(
       padding: EdgeInsets.zero,
       children: <Widget>[
@@ -42,7 +43,7 @@ class LeTiroirState extends State<LeTiroir> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const MyHomePage(),
+                builder: (context) => const ConnexionPage(),
               ),
             );
             // Then close the drawer

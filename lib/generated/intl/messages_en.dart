@@ -23,13 +23,27 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "pageAccueilActualiserListe":
-            MessageLookupByLibrary.simpleMessage("Actualiser la liste"),
-        "pageAccueilTitre": MessageLookupByLibrary.simpleMessage("Accueil"),
+            MessageLookupByLibrary.simpleMessage("Refresh the list"),
+        "pageAccueilTitre": MessageLookupByLibrary.simpleMessage("Home"),
         "pageConnexionConnexion":
-            MessageLookupByLibrary.simpleMessage("Se connecter"),
+            MessageLookupByLibrary.simpleMessage("Sign in"),
         "pageConnexionInscription":
-            MessageLookupByLibrary.simpleMessage("S\'inscrire"),
-        "pageConnexionTitre": MessageLookupByLibrary.simpleMessage("Connexion"),
+            MessageLookupByLibrary.simpleMessage("Sign up"),
+        "pageConnexionTitre":
+            MessageLookupByLibrary.simpleMessage("Connection"),
+        "pageConsultationEcheance":
+            MessageLookupByLibrary.simpleMessage("Deadline"),
+        "pageConsultationModifier":
+            MessageLookupByLibrary.simpleMessage("Edit the task"),
+        "pageConsultationNomTache":
+            MessageLookupByLibrary.simpleMessage("Task name"),
+        "pageConsultationNouvelleValeur":
+            MessageLookupByLibrary.simpleMessage("New percentage"),
+        "pageConsultationPourcentageCompletion":
+            MessageLookupByLibrary.simpleMessage("Percentage of completion: "),
+        "pageConsultationPourcentageTemps":
+            MessageLookupByLibrary.simpleMessage(
+                "Percentage of elpapsed time: "),
         "pageConsultationTitre":
             MessageLookupByLibrary.simpleMessage("Consultation"),
         "pageCreationTitre": MessageLookupByLibrary.simpleMessage("Creation"),

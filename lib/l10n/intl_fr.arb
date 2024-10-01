@@ -7,6 +7,12 @@
   "pageConnexionInscription": "S'inscrire",
 
   "pageConsultationTitre": "Consultation",
+  "pageConsultationModifier": "Modifier la tache",
+  "pageConsultationNouvelleValeur": "Nouveau Pourcentage",
+  "pageConsultationNomTache": "Nom de la tâche: ",
+  "pageConsultationEcheance": "Date d'échéance: ",
+  "pageConsultationPourcentageCompletion": "Pourcentage de complétion: ",
+  "pageConsultationPourcentageTemps": "Pourcentage du temps écoulé: ",
 
   "pageCreationTitre": "Creation",
 

@@ -31,8 +31,8 @@ Map<String, dynamic> _$ProgressEventToJson(ProgressEvent instance) =>
 HomeItemResponse _$HomeItemResponseFromJson(Map<String, dynamic> json) =>
     HomeItemResponse()
       ..id = (json['id'] as num).toInt()
-      //..creationDate = DateTime.parse(json['creationDate'] as String)
-      //..deadline = DateTime.parse(json['deadline'] as String)
+      ..creationDate = DateTime.parse(json['creationDate'] as String)
+      ..deadline = DateTime.parse(json['deadline'] as String)
       ..percentageDone = (json['percentageDone'] as num).toInt()
       ..percentageTimeSpent = (json['percentageTimeSpent'] as num).toDouble()
       ..name = json['name'] as String;
@@ -40,8 +40,8 @@ HomeItemResponse _$HomeItemResponseFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$HomeItemResponseToJson(HomeItemResponse instance) =>
     <String, dynamic>{
       'id': instance.id,
-      //'creationDate': instance.creationDate.toIso8601String(),
-      //'deadline': instance.deadline.toIso8601String(),
+      'creationDate': instance.creationDate.toIso8601String(),
+      'deadline': instance.deadline.toIso8601String(),
       'percentageDone': instance.percentageDone,
       'percentageTimeSpent': instance.percentageTimeSpent,
       'name': instance.name,

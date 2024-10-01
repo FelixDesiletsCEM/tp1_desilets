@@ -5,7 +5,6 @@ import 'package:tp1_desilets/http/service.dart';
 import 'tiroir_nav.dart';
 import 'package:tp1_desilets/transfer/task.dart';
 import 'generated/l10n.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 class ConsultationPage extends StatefulWidget {
   const ConsultationPage({super.key, required this.task});
 
@@ -34,7 +33,7 @@ class _ConsultationPage extends State<ConsultationPage> {
             Text("Pourcentage du temps écoulé: ${widget.task.percentageDone}"),
             TextField(
                 controller: pourcentageTextController,
-                decoration: const InputDecoration(hintText: "Nouveau Pourcentage")
+                decoration: InputDecoration(hintText: S.of(context).pageConsultationNouvelleValeur)
             ),
             TextButton(onPressed: ()async{
               try {
@@ -48,9 +47,9 @@ class _ConsultationPage extends State<ConsultationPage> {
               } on DioException catch (e) {
                 String message = e.response.toString();
                 ScaffoldMessenger.of(context)
-                    .showSnackBar(const SnackBar(content: Text("Il faut mettre le message ici.")));
+                    .showSnackBar( SnackBar(content: Text(message)));
               }
-            }, child: const Text("Modifier la tache"))
+            }, child: Text(S.of(context).pageConsultationModifier))
           ],
         ),
       ),

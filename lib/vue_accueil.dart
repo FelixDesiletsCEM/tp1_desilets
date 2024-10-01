@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tp1_desilets/transfer/task.dart';
 import 'package:tp1_desilets/vue_consultation.dart';
 import 'http/service.dart';
@@ -37,6 +38,7 @@ class _PageAccueil extends State<AccueilPage> {
   }
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       drawer: const LeTiroir(),
       appBar: AppBar(
@@ -67,7 +69,7 @@ class _PageAccueil extends State<AccueilPage> {
                       ),
                     );},
                     leading: Text(tasks[index].name.toString()),
-                    title: Text(tasks[index].name.toString()),
+                    title: Text(tasks[index].name.toString() + "Date"),
                     trailing: Text(tasks[index].percentageDone.toString()),
                   );
                 },

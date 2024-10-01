@@ -30,6 +30,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "pageConnexionInscription":
             MessageLookupByLibrary.simpleMessage("S\'inscrire"),
         "pageConnexionTitre": MessageLookupByLibrary.simpleMessage("Connexion"),
+        "pageConsultationEcheance":
+            MessageLookupByLibrary.simpleMessage("Date d\'échéance: "),
+        "pageConsultationModifier":
+            MessageLookupByLibrary.simpleMessage("Modifier la tache"),
+        "pageConsultationNomTache":
+            MessageLookupByLibrary.simpleMessage("Nom de la tâche: "),
+        "pageConsultationNouvelleValeur":
+            MessageLookupByLibrary.simpleMessage("Nouveau Pourcentage"),
+        "pageConsultationPourcentageCompletion":
+            MessageLookupByLibrary.simpleMessage("Pourcentage de complétion: "),
+        "pageConsultationPourcentageTemps":
+            MessageLookupByLibrary.simpleMessage(
+                "Pourcentage du temps écoulé: "),
         "pageConsultationTitre":
             MessageLookupByLibrary.simpleMessage("Consultation"),
         "pageCreationTitre": MessageLookupByLibrary.simpleMessage("Creation"),
