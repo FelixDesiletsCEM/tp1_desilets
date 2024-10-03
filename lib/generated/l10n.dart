@@ -100,6 +100,26 @@ class S {
     );
   }
 
+  /// `Username`
+  String get pageConnexionNom {
+    return Intl.message(
+      'Username',
+      name: 'pageConnexionNom',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get pageConnexionMotDePasse {
+    return Intl.message(
+      'Password',
+      name: 'pageConnexionMotDePasse',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Consultation`
   String get pageConsultationTitre {
     return Intl.message(
@@ -180,11 +200,61 @@ class S {
     );
   }
 
+  /// `Task name`
+  String get pageCreationNomTache {
+    return Intl.message(
+      'Task name',
+      name: 'pageCreationNomTache',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add task`
+  String get pageCreationAjoutTache {
+    return Intl.message(
+      'Add task',
+      name: 'pageCreationAjoutTache',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Inscription`
   String get pageInscriptionTitre {
     return Intl.message(
       'Inscription',
       name: 'pageInscriptionTitre',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm password`
+  String get pageInscriptionConfirmation {
+    return Intl.message(
+      'Confirm password',
+      name: 'pageInscriptionConfirmation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add a task`
+  String get tiroirAjoutTache {
+    return Intl.message(
+      'Add a task',
+      name: 'tiroirAjoutTache',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign out`
+  String get tiroirDeconnexion {
+    return Intl.message(
+      'Sign out',
+      name: 'tiroirDeconnexion',
       desc: '',
       args: [],
     );

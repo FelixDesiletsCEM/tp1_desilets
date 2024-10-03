@@ -27,10 +27,10 @@ class _ConsultationPage extends State<ConsultationPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('Nom de la tache:${widget.task.name}'),
-            Text("La date d'échéance ${widget.task.name}"),
-            Text("Pourcentage de complétion: ${widget.task.percentageDone}"),
-            Text("Pourcentage du temps écoulé: ${widget.task.percentageDone}"),
+            Text('${S.of(context).pageConsultationNomTache} ${widget.task.name}'),
+            Text("${S.of(context).pageConsultationEcheance} ${widget.task.name}"),
+            Text("${S.of(context).pageConsultationPourcentageCompletion} ${widget.task.percentageDone}"),
+            Text("${S.of(context).pageConsultationPourcentageTemps} ${widget.task.percentageDone}"),
             TextField(
                 controller: pourcentageTextController,
                 decoration: InputDecoration(hintText: S.of(context).pageConsultationNouvelleValeur)

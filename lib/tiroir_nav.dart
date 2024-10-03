@@ -29,7 +29,7 @@ class LeTiroirState extends State<LeTiroir> {
         ListTile(
           dense: true,
           leading: const Icon(Icons.ac_unit),
-          title: const Text("Déconnexion"),
+          title: Text(S.of(context).tiroirDeconnexion),
           onTap: () async{
             try{
               var reponse = await signout();
@@ -54,7 +54,7 @@ class LeTiroirState extends State<LeTiroir> {
         ListTile(
           dense: true,
           leading: const Icon(Icons.ac_unit),
-          title: const Text("Ajout de tâche"),
+          title: Text(S.of(context).tiroirAjoutTache),
           onTap: () {
             Navigator.of(context).pop();
             Navigator.push(

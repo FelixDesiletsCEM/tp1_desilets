@@ -29,6 +29,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sign in"),
         "pageConnexionInscription":
             MessageLookupByLibrary.simpleMessage("Sign up"),
+        "pageConnexionMotDePasse":
+            MessageLookupByLibrary.simpleMessage("Password"),
+        "pageConnexionNom": MessageLookupByLibrary.simpleMessage("Username"),
         "pageConnexionTitre":
             MessageLookupByLibrary.simpleMessage("Connection"),
         "pageConsultationEcheance":
@@ -46,8 +49,16 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Percentage of elpapsed time: "),
         "pageConsultationTitre":
             MessageLookupByLibrary.simpleMessage("Consultation"),
+        "pageCreationAjoutTache":
+            MessageLookupByLibrary.simpleMessage("Add task"),
+        "pageCreationNomTache":
+            MessageLookupByLibrary.simpleMessage("Task name"),
         "pageCreationTitre": MessageLookupByLibrary.simpleMessage("Creation"),
+        "pageInscriptionConfirmation":
+            MessageLookupByLibrary.simpleMessage("Confirm password"),
         "pageInscriptionTitre":
-            MessageLookupByLibrary.simpleMessage("Inscription")
+            MessageLookupByLibrary.simpleMessage("Inscription"),
+        "tiroirAjoutTache": MessageLookupByLibrary.simpleMessage("Add a task"),
+        "tiroirDeconnexion": MessageLookupByLibrary.simpleMessage("Sign out")
       };
 }

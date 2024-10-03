@@ -33,11 +33,11 @@ class _ConnexionPageState extends State<ConnexionPage> {
           children: <Widget>[
             TextField(
               controller: usernameTextController,
-              decoration: InputDecoration(hintText: S.of(context).pageConnexionConnexion)
+              decoration: InputDecoration(hintText: S.of(context).pageConnexionNom)
             ),
             TextField(
                 controller: passwordTextController,
-                decoration: InputDecoration(hintText: S.of(context).pageConnexionInscription)
+                decoration: InputDecoration(hintText: S.of(context).pageConnexionMotDePasse)
             ),
             TextButton(
                 onPressed: () async {
@@ -68,7 +68,7 @@ class _ConnexionPageState extends State<ConnexionPage> {
                 child: Text(S.of(context).pageConnexionConnexion)
             ),
             bouton_navigation(
-                texte: "Inscription",
+                texte: S.of(context).pageInscriptionTitre,
                 targetPage: InscriptionPage(),
             ),
           ],

@@ -5,6 +5,8 @@
   "pageConnexionTitre": "Connection",
   "pageConnexionConnexion": "Sign in",
   "pageConnexionInscription": "Sign up",
+  "pageConnexionNom": "Username",
+  "pageConnexionMotDePasse": "Password",
 
   "pageConsultationTitre": "Consultation",
   "pageConsultationModifier": "Edit the task",
@@ -15,6 +17,12 @@
   "pageConsultationPourcentageTemps": "Percentage of elpapsed time: ",
 
   "pageCreationTitre": "Creation",
+  "pageCreationNomTache": "Task name",
+  "pageCreationAjoutTache": "Add task",
 
-  "pageInscriptionTitre": "Inscription"
+  "pageInscriptionTitre": "Inscription",
+  "pageInscriptionConfirmation": "Confirm password",
+
+  "tiroirAjoutTache": "Add a task",
+  "tiroirDeconnexion": "Sign out"
 }

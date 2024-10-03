@@ -5,6 +5,8 @@
   "pageConnexionTitre": "Connexion",
   "pageConnexionConnexion": "Se connecter",
   "pageConnexionInscription": "S'inscrire",
+  "pageConnexionNom": "Nom d'utilisateur",
+  "pageConnexionMotDePasse": "Mot de passe",
 
   "pageConsultationTitre": "Consultation",
   "pageConsultationModifier": "Modifier la tache",
@@ -15,6 +17,12 @@
   "pageConsultationPourcentageTemps": "Pourcentage du temps écoulé: ",
 
   "pageCreationTitre": "Creation",
+  "pageCreationNomTache": "Nom de la tache",
+  "pageCreationAjoutTache": "Ajouter la tache",
 
-  "pageInscriptionTitre": "Inscription"
+  "pageInscriptionTitre": "Inscription",
+  "pageInscriptionConfirmation": "Confirmer le mot de passe",
+
+  "tiroirAjoutTache": "Ajout de tache",
+  "tiroirDeconnexion": "Déconnexion"
 }

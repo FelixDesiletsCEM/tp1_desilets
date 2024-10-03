@@ -30,9 +30,9 @@ class _InscriptionPageState extends State<InscriptionPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(S.of(context).pageInscriptionTitre),
-            TextField(decoration: const InputDecoration(hintText: 'Nom d\'utilisateur'), controller: usernameTextController,),
-            TextField(decoration: const InputDecoration(hintText: 'Mot de passe'), controller: passwordTextController,),
-            TextField(decoration: const InputDecoration(hintText: 'Confirmer le mot de passe'),),
+            TextField(decoration: InputDecoration(hintText: S.of(context).pageConnexionNom), controller: usernameTextController,),
+            TextField(decoration: InputDecoration(hintText: S.of(context).pageConnexionMotDePasse), controller: passwordTextController,),
+            TextField(decoration: InputDecoration(hintText: S.of(context).pageInscriptionConfirmation),),
             TextButton(
                 onPressed: () async {/*Faire requête http puis aller à l'accueil.*/
                   {

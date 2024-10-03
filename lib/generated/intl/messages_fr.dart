@@ -29,6 +29,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Se connecter"),
         "pageConnexionInscription":
             MessageLookupByLibrary.simpleMessage("S\'inscrire"),
+        "pageConnexionMotDePasse":
+            MessageLookupByLibrary.simpleMessage("Mot de passe"),
+        "pageConnexionNom":
+            MessageLookupByLibrary.simpleMessage("Nom d\'utilisateur"),
         "pageConnexionTitre": MessageLookupByLibrary.simpleMessage("Connexion"),
         "pageConsultationEcheance":
             MessageLookupByLibrary.simpleMessage("Date d\'échéance: "),
@@ -45,8 +49,17 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Pourcentage du temps écoulé: "),
         "pageConsultationTitre":
             MessageLookupByLibrary.simpleMessage("Consultation"),
+        "pageCreationAjoutTache":
+            MessageLookupByLibrary.simpleMessage("Ajouter la tache"),
+        "pageCreationNomTache":
+            MessageLookupByLibrary.simpleMessage("Nom de la tache"),
         "pageCreationTitre": MessageLookupByLibrary.simpleMessage("Creation"),
+        "pageInscriptionConfirmation":
+            MessageLookupByLibrary.simpleMessage("Confirmer le mot de passe"),
         "pageInscriptionTitre":
-            MessageLookupByLibrary.simpleMessage("Inscription")
+            MessageLookupByLibrary.simpleMessage("Inscription"),
+        "tiroirAjoutTache":
+            MessageLookupByLibrary.simpleMessage("Ajout de tache"),
+        "tiroirDeconnexion": MessageLookupByLibrary.simpleMessage("Déconnexion")
       };
 }

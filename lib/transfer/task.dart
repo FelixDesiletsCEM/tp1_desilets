@@ -29,7 +29,7 @@ class HomeItemResponse
   HomeItemResponse ();
   int id = 0;
   DateTime creationDate = DateTime(0, 0, 0, 0, 0, 0);
-  DateTime deadline = DateTime (0, 0, 0, 0, 0, 0);
+  DateTime deadline = DateTime(0, 0, 0, 0, 0, 0);
   int percentageDone = 0;
   double percentageTimeSpent = 0;
   String name = '';

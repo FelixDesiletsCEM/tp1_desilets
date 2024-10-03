@@ -9,8 +9,6 @@ import 'generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 class CreationPage extends StatefulWidget {
   const CreationPage({super.key});
-
-
   @override
   State<CreationPage> createState() => _CreationPage();
 }
@@ -33,7 +31,7 @@ class _CreationPage extends State<CreationPage> {
           children: <Widget>[
             TextField(
               controller: tasknameTextController, 
-              decoration: const InputDecoration(hintText: "Task name")
+              decoration: InputDecoration(hintText: S.of(context).pageCreationNomTache)
             ),
             TextButton(
                 onPressed: () async {/*Requête puis écran accueil*/
@@ -57,7 +55,7 @@ class _CreationPage extends State<CreationPage> {
                       builder: (context) => const AccueilPage(),
                     ),
                   );},
-                child: const Text("Add task")
+                child: Text(S.of(context).pageCreationAjoutTache)
             )
           ],
         ),
