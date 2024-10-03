@@ -7,9 +7,10 @@ part of 'task.dart';
 // **************************************************************************
 
 AddTaskRequest _$AddTaskRequestFromJson(Map<String, dynamic> json) =>
-    AddTaskRequest()
-      ..name = json['name'] as String
-      ..deadline = DateTime.parse(json['deadline'] as String);
+    AddTaskRequest(
+      json['name'] as String,
+      DateTime.parse(json['deadline'] as String),
+    );
 
 Map<String, dynamic> _$AddTaskRequestToJson(AddTaskRequest instance) =>
     <String, dynamic>{
@@ -18,9 +19,10 @@ Map<String, dynamic> _$AddTaskRequestToJson(AddTaskRequest instance) =>
     };
 
 ProgressEvent _$ProgressEventFromJson(Map<String, dynamic> json) =>
-    ProgressEvent()
-      ..value = (json['value'] as num).toInt()
-      ..timestamp = DateTime.parse(json['timestamp'] as String);
+    ProgressEvent(
+      (json['value'] as num).toInt(),
+      DateTime.parse(json['timestamp'] as String),
+    );
 
 Map<String, dynamic> _$ProgressEventToJson(ProgressEvent instance) =>
     <String, dynamic>{
@@ -29,18 +31,19 @@ Map<String, dynamic> _$ProgressEventToJson(ProgressEvent instance) =>
     };
 
 HomeItemResponse _$HomeItemResponseFromJson(Map<String, dynamic> json) =>
-    HomeItemResponse()
-      ..id = (json['id'] as num).toInt()
-      ..creationDate = DateTime.parse(json['creationDate'] as String)
-      ..deadline = DateTime.parse(json['deadline'] as String)
-      ..percentageDone = (json['percentageDone'] as num).toInt()
-      ..percentageTimeSpent = (json['percentageTimeSpent'] as num).toDouble()
-      ..name = json['name'] as String;
+    HomeItemResponse(
+      (json['id'] as num).toInt(),
+      json['name'] as String,
+      (json['percentageDone'] as num).toInt(),
+      (json['percentageTimeSpent'] as num).toDouble(),
+      //DateTime.parse(json['creationDate'] as String),
+      DateTime.parse(json['deadline'] as String),
+    );
 
 Map<String, dynamic> _$HomeItemResponseToJson(HomeItemResponse instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'creationDate': instance.creationDate.toIso8601String(),
+      //'creationDate': instance.creationDate.toIso8601String(),
       'deadline': instance.deadline.toIso8601String(),
       'percentageDone': instance.percentageDone,
       'percentageTimeSpent': instance.percentageTimeSpent,

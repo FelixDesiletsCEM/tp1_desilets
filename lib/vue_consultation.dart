@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tp1_desilets/http/service.dart';
+import 'package:tp1_desilets/vue_accueil.dart';
 import 'tiroir_nav.dart';
 import 'package:tp1_desilets/transfer/task.dart';
 import 'generated/l10n.dart';
@@ -37,10 +38,8 @@ class _ConsultationPage extends State<ConsultationPage> {
             ),
             TextButton(onPressed: ()async{
               try {
-                ProgressEvent request = ProgressEvent();
-                request.value = int.parse(pourcentageTextController.text);
-                request.timestamp = DateTime.now();
-                var reponse = await editTask(request);
+                ProgressEvent request = ProgressEvent(int.parse(pourcentageTextController.text), DateTime.now());
+                var reponse = await editTask(request, super.widget.task.id);
                 if (kDebugMode) {
                   print(reponse);
                 }
@@ -49,6 +48,12 @@ class _ConsultationPage extends State<ConsultationPage> {
                 ScaffoldMessenger.of(context)
                     .showSnackBar( SnackBar(content: Text(message)));
               }
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const AccueilPage(),
+                ),
+              );
             }, child: Text(S.of(context).pageConsultationModifier))
           ],
         ),

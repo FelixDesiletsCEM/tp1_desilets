@@ -50,16 +50,6 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Home`
-  String get pageAccueilTitre {
-    return Intl.message(
-      'Home',
-      name: 'pageAccueilTitre',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Refresh the list`
   String get pageAccueilActualiserListe {
     return Intl.message(
@@ -70,11 +60,11 @@ class S {
     );
   }
 
-  /// `Connection`
-  String get pageConnexionTitre {
+  /// `Home`
+  String get pageAccueilTitre {
     return Intl.message(
-      'Connection',
-      name: 'pageConnexionTitre',
+      'Home',
+      name: 'pageAccueilTitre',
       desc: '',
       args: [],
     );
@@ -100,16 +90,6 @@ class S {
     );
   }
 
-  /// `Username`
-  String get pageConnexionNom {
-    return Intl.message(
-      'Username',
-      name: 'pageConnexionNom',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Password`
   String get pageConnexionMotDePasse {
     return Intl.message(
@@ -120,11 +100,31 @@ class S {
     );
   }
 
-  /// `Consultation`
-  String get pageConsultationTitre {
+  /// `Username`
+  String get pageConnexionNom {
     return Intl.message(
-      'Consultation',
-      name: 'pageConsultationTitre',
+      'Username',
+      name: 'pageConnexionNom',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connection`
+  String get pageConnexionTitre {
+    return Intl.message(
+      'Connection',
+      name: 'pageConnexionTitre',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Deadline`
+  String get pageConsultationEcheance {
+    return Intl.message(
+      'Deadline',
+      name: 'pageConsultationEcheance',
       desc: '',
       args: [],
     );
@@ -140,16 +140,6 @@ class S {
     );
   }
 
-  /// `New percentage`
-  String get pageConsultationNouvelleValeur {
-    return Intl.message(
-      'New percentage',
-      name: 'pageConsultationNouvelleValeur',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Task name`
   String get pageConsultationNomTache {
     return Intl.message(
@@ -160,11 +150,11 @@ class S {
     );
   }
 
-  /// `Deadline`
-  String get pageConsultationEcheance {
+  /// `New percentage`
+  String get pageConsultationNouvelleValeur {
     return Intl.message(
-      'Deadline',
-      name: 'pageConsultationEcheance',
+      'New percentage',
+      name: 'pageConsultationNouvelleValeur',
       desc: '',
       args: [],
     );
@@ -190,21 +180,11 @@ class S {
     );
   }
 
-  /// `Creation`
-  String get pageCreationTitre {
+  /// `Consultation`
+  String get pageConsultationTitre {
     return Intl.message(
-      'Creation',
-      name: 'pageCreationTitre',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Task name`
-  String get pageCreationNomTache {
-    return Intl.message(
-      'Task name',
-      name: 'pageCreationNomTache',
+      'Consultation',
+      name: 'pageConsultationTitre',
       desc: '',
       args: [],
     );
@@ -220,11 +200,21 @@ class S {
     );
   }
 
-  /// `Inscription`
-  String get pageInscriptionTitre {
+  /// `Task name`
+  String get pageCreationNomTache {
     return Intl.message(
-      'Inscription',
-      name: 'pageInscriptionTitre',
+      'Task name',
+      name: 'pageCreationNomTache',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Creation`
+  String get pageCreationTitre {
+    return Intl.message(
+      'Creation',
+      name: 'pageCreationTitre',
       desc: '',
       args: [],
     );
@@ -235,6 +225,16 @@ class S {
     return Intl.message(
       'Confirm password',
       name: 'pageInscriptionConfirmation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Inscription`
+  String get pageInscriptionTitre {
+    return Intl.message(
+      'Inscription',
+      name: 'pageInscriptionTitre',
       desc: '',
       args: [],
     );

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tp1_desilets/transfer/task.dart';
 import 'package:tp1_desilets/vue_consultation.dart';
 import 'http/service.dart';
@@ -8,8 +7,6 @@ import 'generated/l10n.dart';
 
 class AccueilPage extends StatefulWidget {
   const AccueilPage({super.key});
-
-
   @override
   State<AccueilPage> createState() => _PageAccueil();
 }
@@ -27,11 +24,9 @@ class _PageAccueil extends State<AccueilPage> {
     }
   }
 
-
   @override
   void initState() {
     super.initState();
-    // TODO: implement initState
       getListe();
       setState(() {
       });
@@ -68,12 +63,11 @@ class _PageAccueil extends State<AccueilPage> {
                         builder: (context) => ConsultationPage(task: tasks[index]),
                       ),
                     );},
-                    leading: Text(tasks[index].name.toString()),
-                    title: Text(tasks[index].name.toString() + "Date"),
-                    trailing: Text(tasks[index].percentageDone.toString()),
+                    leading: Text(tasks[index].name.toString()), //Le nom de la tache
+                    title: Text(tasks[index].deadline.toString()), //L'échéance
+                    trailing: Text(tasks[index].percentageDone.toString()), //complétion %
                   );
                 },
-
               )
             )
           ],

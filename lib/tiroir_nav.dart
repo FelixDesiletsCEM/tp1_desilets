@@ -4,7 +4,6 @@ import 'package:tp1_desilets/http/service.dart';
 import 'package:tp1_desilets/vue_connexion.dart';
 import 'package:tp1_desilets/vue_accueil.dart';
 import 'package:tp1_desilets/vue_creation.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
 class LeTiroir extends StatefulWidget {
   const LeTiroir({super.key});
@@ -50,7 +49,6 @@ class LeTiroirState extends State<LeTiroir> {
           },
         ),
 
-        // TODO le tiroir de navigation ne peut pointer que vers des ecran sans paramètre.
         ListTile(
           dense: true,
           leading: const Icon(Icons.ac_unit),

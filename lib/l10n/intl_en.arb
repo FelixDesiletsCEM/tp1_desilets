@@ -1,27 +1,27 @@
 {
-  "pageAccueilTitre": "Home",
   "pageAccueilActualiserListe": "Refresh the list",
+  "pageAccueilTitre": "Home",
 
-  "pageConnexionTitre": "Connection",
   "pageConnexionConnexion": "Sign in",
   "pageConnexionInscription": "Sign up",
-  "pageConnexionNom": "Username",
   "pageConnexionMotDePasse": "Password",
+  "pageConnexionNom": "Username",
+  "pageConnexionTitre": "Connection",
 
-  "pageConsultationTitre": "Consultation",
-  "pageConsultationModifier": "Edit the task",
-  "pageConsultationNouvelleValeur": "New percentage",
-  "pageConsultationNomTache": "Task name",
   "pageConsultationEcheance": "Deadline",
+  "pageConsultationModifier": "Edit the task",
+  "pageConsultationNomTache": "Task name",
+  "pageConsultationNouvelleValeur": "New percentage",
   "pageConsultationPourcentageCompletion": "Percentage of completion: ",
   "pageConsultationPourcentageTemps": "Percentage of elpapsed time: ",
+  "pageConsultationTitre": "Consultation",
 
-  "pageCreationTitre": "Creation",
-  "pageCreationNomTache": "Task name",
   "pageCreationAjoutTache": "Add task",
+  "pageCreationNomTache": "Task name",
+  "pageCreationTitre": "Creation",
 
-  "pageInscriptionTitre": "Inscription",
   "pageInscriptionConfirmation": "Confirm password",
+  "pageInscriptionTitre": "Inscription",
 
   "tiroirAjoutTache": "Add a task",
   "tiroirDeconnexion": "Sign out"

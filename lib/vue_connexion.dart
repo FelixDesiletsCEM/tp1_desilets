@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tp1_desilets/vue_inscription.dart';
 import 'package:tp1_desilets/http/service.dart';
 import 'package:tp1_desilets/transfer/account.dart';
@@ -69,7 +68,7 @@ class _ConnexionPageState extends State<ConnexionPage> {
             ),
             bouton_navigation(
                 texte: S.of(context).pageInscriptionTitre,
-                targetPage: InscriptionPage(),
+                targetPage: const InscriptionPage(),
             ),
           ],
         ),

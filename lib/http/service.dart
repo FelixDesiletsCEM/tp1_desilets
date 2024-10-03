@@ -26,16 +26,20 @@ Future<SigninResponse> signup(SignupRequest req) async
         data: req,
         options: Options(contentType: Headers.jsonContentType));
 
-    Logger.root.onRecord.listen((record) {
+    /*Logger.root.onRecord.listen((record) {
       if (kDebugMode) {
         print('${record.level.name}: ${record.time}: ${record.message} test');
       }
-    });
-    //print(response);
+    });*/
+    if (kDebugMode) {
+      print(response);
+    }
     return SigninResponse.fromJson(response.data);
   }
   catch (e){
-    print(e);
+    if (kDebugMode) {
+      print(e);
+    }
     rethrow;
   }
 }
@@ -89,7 +93,7 @@ Future<List<HomeItemResponse>> home() async {
 Future<String> addTask(AddTaskRequest request) async
 {
   try{
-    var response = await Dio().post('$baseUrl/api/add',
+    var response = await SingletonDio.getDio().post('$baseUrl/api/add',
     data: request,
     options: Options(contentType: Headers.jsonContentType));
     print(response);
@@ -101,10 +105,10 @@ Future<String> addTask(AddTaskRequest request) async
   }
 }
 
-Future<String> editTask(ProgressEvent request) async
+Future<String> editTask(ProgressEvent request, int id) async
 {
   try{
-    var response = await SingletonDio.getDio().post('$baseUrl/api/progress/{taskID}/{value}',
+    var response = await SingletonDio.getDio().get('$baseUrl/api/progress/${id}/${request.value}',
         data: request,
         options: Options(contentType: Headers.jsonContentType));
       print(response);

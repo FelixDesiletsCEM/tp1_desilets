@@ -6,7 +6,7 @@ import 'package:tp1_desilets/vue_accueil.dart';
 import 'tiroir_nav.dart';
 import 'package:tp1_desilets/http/service.dart';
 import 'generated/l10n.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+
 class CreationPage extends StatefulWidget {
   const CreationPage({super.key});
   @override
@@ -36,18 +36,12 @@ class _CreationPage extends State<CreationPage> {
             TextButton(
                 onPressed: () async {/*Requête puis écran accueil*/
                   try {
-                    AddTaskRequest request = AddTaskRequest();
-                    request.name = "testName";
-                    request.deadline = DateTime(2024,3, 2);
+                    AddTaskRequest request = AddTaskRequest("testName", DateTime.now());
                     var reponse = await addTask(request);
-                    if (kDebugMode) {
                       print(reponse);
-                    }
                   } on DioException catch (e) {
                     String message = e.response.toString();
-                    if (kDebugMode) {
                       print(message);
-                    }
                   }
                   Navigator.push(
                     context,

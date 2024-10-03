@@ -5,7 +5,6 @@ import 'package:tp1_desilets/transfer/account.dart';
 import 'package:tp1_desilets/vue_accueil.dart';
 import 'http/service.dart';
 import 'generated/l10n.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 class InscriptionPage extends StatefulWidget {
   const InscriptionPage({super.key});

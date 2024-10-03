@@ -1,27 +1,27 @@
 {
-  "pageAccueilTitre": "Accueil",
   "pageAccueilActualiserListe": "Actualiser la liste",
+  "pageAccueilTitre": "Accueil",
 
-  "pageConnexionTitre": "Connexion",
   "pageConnexionConnexion": "Se connecter",
   "pageConnexionInscription": "S'inscrire",
-  "pageConnexionNom": "Nom d'utilisateur",
   "pageConnexionMotDePasse": "Mot de passe",
+  "pageConnexionNom": "Nom d'utilisateur",
+  "pageConnexionTitre": "Connexion",
 
-  "pageConsultationTitre": "Consultation",
-  "pageConsultationModifier": "Modifier la tache",
-  "pageConsultationNouvelleValeur": "Nouveau Pourcentage",
-  "pageConsultationNomTache": "Nom de la tâche: ",
   "pageConsultationEcheance": "Date d'échéance: ",
+  "pageConsultationModifier": "Modifier la tache",
+  "pageConsultationNomTache": "Nom de la tâche: ",
+  "pageConsultationNouvelleValeur": "Nouveau Pourcentage",
   "pageConsultationPourcentageCompletion": "Pourcentage de complétion: ",
   "pageConsultationPourcentageTemps": "Pourcentage du temps écoulé: ",
+  "pageConsultationTitre": "Consultation",
 
-  "pageCreationTitre": "Creation",
-  "pageCreationNomTache": "Nom de la tache",
   "pageCreationAjoutTache": "Ajouter la tache",
+  "pageCreationNomTache": "Nom de la tache",
+  "pageCreationTitre": "Creation",
 
-  "pageInscriptionTitre": "Inscription",
   "pageInscriptionConfirmation": "Confirmer le mot de passe",
+  "pageInscriptionTitre": "Inscription",
 
   "tiroirAjoutTache": "Ajout de tache",
   "tiroirDeconnexion": "Déconnexion"
