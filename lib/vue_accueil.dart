@@ -63,9 +63,10 @@ class _PageAccueil extends State<AccueilPage> {
                         builder: (context) => ConsultationPage(task: tasks[index]),
                       ),
                     );},
-                    leading: Text(tasks[index].name.toString()), //Le nom de la tache
-                    title: Text(tasks[index].deadline.toString()), //L'échéance
-                    trailing: Text(tasks[index].percentageDone.toString()), //complétion %
+                    leading: SizedBox(child: Image(image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'), width: 200, height: 200,)),
+                    title: Text(tasks[index].name),
+                    subtitle: Text(tasks[index].deadline.toIso8601String()),
+                    trailing: Text(tasks[index].percentageDone.toString()),
                   );
                 },
               )

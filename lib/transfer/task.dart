@@ -1,4 +1,6 @@
- import 'package:json_annotation/json_annotation.dart';
+ import 'dart:ffi';
+
+import 'package:json_annotation/json_annotation.dart';
 part 'task.g.dart';
 
  @JsonSerializable()
