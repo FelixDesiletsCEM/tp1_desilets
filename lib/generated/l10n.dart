@@ -220,6 +220,16 @@ class S {
     );
   }
 
+  /// `Delete`
+  String get SuppressionTache {
+    return Intl.message(
+      'Delete',
+      name: 'SuppressionTache',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Confirm password`
   String get pageInscriptionConfirmation {
     return Intl.message(
@@ -235,6 +245,46 @@ class S {
     return Intl.message(
       'Inscription',
       name: 'pageInscriptionTitre',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Passwords don't match.`
+  String get pageInscriptionMotDePasseDifferent {
+    return Intl.message(
+      'Passwords don\'t match.',
+      name: 'pageInscriptionMotDePasseDifferent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This username is already taken.`
+  String get UsernameAlreadyTaken {
+    return Intl.message(
+      'This username is already taken.',
+      name: 'UsernameAlreadyTaken',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The password is too short.`
+  String get PasswordTooShort {
+    return Intl.message(
+      'The password is too short.',
+      name: 'PasswordTooShort',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Network error`
+  String get NetworkError {
+    return Intl.message(
+      'Network error',
+      name: 'NetworkError',
       desc: '',
       args: [],
     );

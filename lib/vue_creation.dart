@@ -57,7 +57,6 @@ class _CreationPage extends State<CreationPage> {
             TextButton(
                 onPressed: () async {/*Requête puis écran accueil*/
                   try {
-                    //TODO prendre un vrai datetime avec un datepicker.
                     AddTaskRequest request = AddTaskRequest(tasknameTextController.text, deadline);
                     var reponse = await addTask(request);
                       print(reponse);

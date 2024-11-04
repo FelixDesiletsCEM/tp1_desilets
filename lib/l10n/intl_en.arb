@@ -19,10 +19,13 @@
   "pageCreationAjoutTache": "Add task",
   "pageCreationNomTache": "Task name",
   "pageCreationTitre": "Creation",
-
+  "SuppressionTache": "Delete",
   "pageInscriptionConfirmation": "Confirm password",
   "pageInscriptionTitre": "Inscription",
-
+  "pageInscriptionMotDePasseDifferent": "Passwords don't match.",
+  "UsernameAlreadyTaken": "This username is already taken.",
+  "PasswordTooShort" : "The password is too short.",
+  "NetworkError": "Network error",
   "tiroirAjoutTache": "Add a task",
   "tiroirDeconnexion": "Sign out"
 }

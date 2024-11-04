@@ -22,6 +22,12 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "NetworkError": MessageLookupByLibrary.simpleMessage("Erreur réseau"),
+        "PasswordTooShort": MessageLookupByLibrary.simpleMessage(
+            "Le mot de passe est trop court."),
+        "SuppressionTache": MessageLookupByLibrary.simpleMessage("Supprimer"),
+        "UsernameAlreadyTaken": MessageLookupByLibrary.simpleMessage(
+            "Un autre compte a déjà ce nom d\'utilisateur."),
         "pageAccueilActualiserListe":
             MessageLookupByLibrary.simpleMessage("Actualiser la liste"),
         "pageAccueilTitre": MessageLookupByLibrary.simpleMessage("Accueil"),
@@ -56,6 +62,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "pageCreationTitre": MessageLookupByLibrary.simpleMessage("Creation"),
         "pageInscriptionConfirmation":
             MessageLookupByLibrary.simpleMessage("Confirmer le mot de passe"),
+        "pageInscriptionMotDePasseDifferent":
+            MessageLookupByLibrary.simpleMessage(
+                "Les mots de passes ne sont pas identique."),
         "pageInscriptionTitre":
             MessageLookupByLibrary.simpleMessage("Inscription"),
         "tiroirAjoutTache":

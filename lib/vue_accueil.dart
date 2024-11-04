@@ -20,7 +20,7 @@ class _PageAccueil extends State<AccueilPage> {
       setState(() {});
     } catch (e) {
       ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text('Erreur reseau')));
+          .showSnackBar(SnackBar(content: Text(S.of(context).NetworkError)));
     }
   }
 

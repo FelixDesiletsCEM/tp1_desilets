@@ -21,7 +21,6 @@ class LeTiroirState extends State<LeTiroir> {
       children: <Widget>[
         Container(
           height: 200,
-
         ),
         //TODO Prendre le nom pour de vrai. Surement créer un singleton lors du login?
         Text("Nom de l'utilisateur connecté"),

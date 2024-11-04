@@ -19,10 +19,13 @@
   "pageCreationAjoutTache": "Ajouter la tache",
   "pageCreationNomTache": "Nom de la tache",
   "pageCreationTitre": "Creation",
-
+  "SuppressionTache": "Supprimer",
   "pageInscriptionConfirmation": "Confirmer le mot de passe",
   "pageInscriptionTitre": "Inscription",
-
+  "pageInscriptionMotDePasseDifferent": "Les mots de passes ne sont pas identique.",
+  "UsernameAlreadyTaken": "Un autre compte a déjà ce nom d'utilisateur.",
+  "PasswordTooShort" : "Le mot de passe est trop court.",
+  "NetworkError": "Erreur réseau",
   "tiroirAjoutTache": "Ajout de tache",
   "tiroirDeconnexion": "Déconnexion"
 }

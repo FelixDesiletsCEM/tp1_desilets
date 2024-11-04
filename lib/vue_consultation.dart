@@ -91,7 +91,8 @@ class _ConsultationPage extends State<ConsultationPage> {
                   builder: (context) => const AccueilPage(),
                 ),
               );
-            }, child: Text(S.of(context).pageConsultationModifier))
+            }, child: Text(S.of(context).pageConsultationModifier)),
+          TextButton(onPressed: (){}, child: Text(S.of(context).SuppressionTache))
           ],
         ),
       ),

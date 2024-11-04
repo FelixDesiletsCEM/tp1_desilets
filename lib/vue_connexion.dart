@@ -55,7 +55,7 @@ class _ConnexionPageState extends State<ConnexionPage> {
                         print(message);
                       }
                       ScaffoldMessenger.of(context)
-                          .showSnackBar(const SnackBar(content: Text('Erreur reseau')));
+                          .showSnackBar(SnackBar(content: Text(S.of(context).NetworkError)));
                     }
                   }
                   Navigator.push(

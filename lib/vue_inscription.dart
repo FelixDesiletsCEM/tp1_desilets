@@ -16,6 +16,7 @@ class InscriptionPage extends StatefulWidget {
 class _InscriptionPageState extends State<InscriptionPage> {
   final usernameTextController = TextEditingController();
   final passwordTextController = TextEditingController();
+  final passwordConfirmTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
 
@@ -29,35 +30,54 @@ class _InscriptionPageState extends State<InscriptionPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(S.of(context).pageInscriptionTitre),
-            TextField(decoration: InputDecoration(hintText: S.of(context).pageConnexionNom), controller: usernameTextController,),
-            TextField(decoration: InputDecoration(hintText: S.of(context).pageConnexionMotDePasse), controller: passwordTextController,),
-            TextField(decoration: InputDecoration(hintText: S.of(context).pageInscriptionConfirmation),),
-            TextButton(
-                onPressed: () async {/*Faire requête http puis aller à l'accueil.*/
+            TextField(decoration: InputDecoration(hintText: S.of(context).pageConnexionNom), controller: usernameTextController),
+            TextField(decoration: InputDecoration(hintText: S.of(context).pageConnexionMotDePasse), controller: passwordTextController),
+            TextField(decoration: InputDecoration(hintText: S.of(context).pageInscriptionConfirmation), controller: passwordConfirmTextController),
+            OutlinedButton(
+                onPressed: () async {
                   {
-                    try {
-                      SignupRequest request = SignupRequest();
-                      request.username = usernameTextController.text;
-                      request.password = passwordTextController.text;
-                      var reponse = await signup(request);
-                      if (kDebugMode) {
-                        print(reponse);
-                      }
-                    } on DioException catch (e) {
-                      String message = e.response.toString();
-                      if (kDebugMode) {
-                        print(message);
-                      }
+                    if(passwordTextController.text != passwordConfirmTextController.text)
+                    {
                       ScaffoldMessenger.of(context)
-                          .showSnackBar(const SnackBar(content: Text('Erreur reseau')));
+                          .showSnackBar(SnackBar(content: Text(S.of(context).pageInscriptionMotDePasseDifferent)));
+                    }
+                    else{
+                      try {
+                        SignupRequest request = SignupRequest();
+                        request.username = usernameTextController.text;
+                        request.password = passwordTextController.text;
+                        var reponse = await signup(request);
+                        if (kDebugMode) {
+                          print(reponse);
+                        }
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const AccueilPage()
+                            )
+                        );
+                      } on DioException catch (e) {
+                        String message = e.response.toString();
+                        if (kDebugMode) {
+                          print(message);
+                        }
+                        switch (message)
+                        {
+                          case "PasswordTooShort":
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(SnackBar(content: Text(S.of(context).PasswordTooShort)));
+                          case "UsernameAlreadyTaken":
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(SnackBar(content: Text(S.of(context).UsernameAlreadyTaken)));
+                          default:
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(SnackBar(content: Text(message)));
+                            //TODO  manque erreur reseau.
+                        }
+                      }
                     }
                   }
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const AccueilPage(),
-                    ),
-                  );},
+                },
                 child: Text(S.of(context).pageInscriptionTitre)
             ),
           ],
