@@ -63,6 +63,7 @@ class _ConsultationPage extends State<ConsultationPage> {
               if (pickedFile != null) {
                 print("l'image a ete choisie ${pickedFile.path}");
                 _imageFile = File(pickedFile.path);
+                print(postPhoto(widget.task.id, pickedFile as MultipartFile));
                 setState(() {});
               }}, child: Text("Change image")),
             Text('${S.of(context).pageConsultationNomTache} ${widget.task.name}'),

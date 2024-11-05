@@ -44,12 +44,12 @@ class _PageAccueil extends State<AccueilPage> with WidgetsBindingObserver{
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
       stopwatch.stop();
-      ScaffoldMessenger.of(context).showSnackBar(
+      /*ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
               'On est parti pendant ${stopwatch.elapsed.inSeconds} secondes'),
         ),
-      );
+      );*/
       stopwatch.reset();
     } else if (state == AppLifecycleState.paused) {
       stopwatch.start();

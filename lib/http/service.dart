@@ -5,7 +5,9 @@ import 'package:flutter/foundation.dart';
 import 'package:tp1_desilets/transfer/account.dart';
 import 'package:tp1_desilets/transfer/task.dart';
 import 'package:logging/logging.dart';
-const String baseUrl = 'https://desilets-kickmyb-server.onrender.com';
+
+import '../transfer/photo.dart';
+const String baseUrl = 'http://10.0.2.2:8080';/*'https://desilets-kickmyb-server.onrender.com'*/
 
 
 class SingletonDio {
@@ -120,3 +122,43 @@ Future<String> editTask(ProgressEvent request, int id) async
   }
 }
 //#endregion
+//region photos
+Future<List<HomeItemPhotoResponse>> homePhoto() async {
+  try {
+    var response = await SingletonDio.getDio().get('$baseUrl/api/home/photo');
+    print(response);
+    var listeJSON = response.data as List;
+    var listeTasksPhotos = listeJSON.map((elementJSON) {
+      return HomeItemPhotoResponse.fromJson(elementJSON);
+    }).toList();
+    return listeTasksPhotos;
+  } catch (e) {
+    print(e);
+    rethrow;
+  }
+}
+Future<TaskDetailPhotoResponse> detailTaskPhoto(int taskId) async {
+  try {
+    var response = await SingletonDio.getDio().get('$baseUrl/file/${taskId}');
+    print(response);
+    var JSON = response.data;
+    var TaskPhoto = JSON.map((elementJSON) {
+      return HomeItemResponse.fromJson(elementJSON);
+    }).toList();
+    return TaskPhoto;
+  } catch (e) {
+    print(e);
+    rethrow;
+  }
+}
+  Future<String> postPhoto(int taskId, MultipartFile file) async {
+    try{
+      var response = await SingletonDio.getDio().get('$baseUrl/file');
+      print(response);
+      return response.toString();
+    }
+    catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
