@@ -11,7 +11,8 @@ class AccueilPage extends StatefulWidget {
   State<AccueilPage> createState() => _PageAccueil();
 }
 
-class _PageAccueil extends State<AccueilPage> {
+class _PageAccueil extends State<AccueilPage> with WidgetsBindingObserver{
+  final stopwatch = Stopwatch();
   List<HomeItemResponse > tasks = [];
   void getListe()
   async {
@@ -22,14 +23,37 @@ class _PageAccueil extends State<AccueilPage> {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(S.of(context).NetworkError)));
     }
+
   }
+
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
       getListe();
       setState(() {
       });
+  }
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      stopwatch.stop();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+              'On est parti pendant ${stopwatch.elapsed.inSeconds} secondes'),
+        ),
+      );
+      stopwatch.reset();
+    } else if (state == AppLifecycleState.paused) {
+      stopwatch.start();
+    }
   }
   @override
   Widget build(BuildContext context) {
