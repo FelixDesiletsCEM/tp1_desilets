@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tp1_desilets/http/service.dart';
+import 'package:tp1_desilets/transfer/photo.dart';
 import 'package:tp1_desilets/vue_accueil.dart';
 import 'tiroir_nav.dart';
 import 'package:tp1_desilets/transfer/task.dart';
@@ -12,38 +13,28 @@ import 'package:image_picker/image_picker.dart';
 class ConsultationPage extends StatefulWidget {
   const ConsultationPage({super.key, required this.task});
 
-  final HomeItemResponse task;
+  final HomeItemPhotoResponse task;
   @override
   State<ConsultationPage> createState() => _ConsultationPage();
 }
 
+
+
 class _ConsultationPage extends State<ConsultationPage> {
   final pourcentageTextController = TextEditingController();
   final picker = ImagePicker();
-  var _imageFile;
-
-  Future getImage() async
-  {
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
-    if(pickedFile != null)
-    {
-      _imageFile = File(pickedFile.path);
-      setState(() {});
-    }
-
+  var imageTask;
+  getImage()
+  async {
+    imageTask = await taskPhoto(widget.task.photoId);
+  }
+  @override
+  void initState() {
+    super.initState();
+    getImage();
+    setState(() {});
   }
 
-  Future<String> postImage(int babyId, File file) async
-  {
-    FormData formData = FormData.fromMap({
-      "babyId": babyId,
-      "file": await MultipartFile.fromFile(file.path, filename: "image.jpg")
-    });
-    var url = "https://fourn6-mobile-prof.onrender.com/exos/fileasmultipart";
-    var response = await Dio().post(url, data: formData);
-    print(response.data);
-    return "";
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,15 +47,24 @@ class _ConsultationPage extends State<ConsultationPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            //TODO Il faut prendre l'image de la tache.
-            Image(image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),),
+            imageTask==null? Image(image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg')):
+            Image.memory(imageTask, width: 200, height: 200),
             TextButton(onPressed: ()async {
-              final pickedFile = await picker.pickImage(source: ImageSource.gallery);
-              if (pickedFile != null) {
-                print("l'image a ete choisie ${pickedFile.path}");
-                _imageFile = File(pickedFile.path);
-                print(postPhoto(widget.task.id, pickedFile as MultipartFile));
-                setState(() {});
+              try{
+                final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+                if (pickedFile != null) {
+                  print("l'image a ete choisie ${pickedFile.path}");
+                  var reponse = await postPhoto(File(pickedFile.path),  widget.task.id);
+                  print(reponse);
+                  getImage();
+                  setState(() {});
+                }}
+              on DioException catch (e)
+              {
+                String message = e.response.toString();
+                ScaffoldMessenger.of(context)
+                    .showSnackBar( SnackBar(content: Text(message)));
+              setState(() {});
               }}, child: Text("Change image")),
             Text('${S.of(context).pageConsultationNomTache} ${widget.task.name}'),
             Text("${S.of(context).pageConsultationEcheance} ${widget.task.name}"),

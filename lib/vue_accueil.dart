@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tp1_desilets/transfer/photo.dart';
 import 'package:tp1_desilets/transfer/task.dart';
 import 'package:tp1_desilets/vue_consultation.dart';
 import 'http/service.dart';
@@ -13,11 +14,11 @@ class AccueilPage extends StatefulWidget {
 
 class _PageAccueil extends State<AccueilPage> with WidgetsBindingObserver{
   final stopwatch = Stopwatch();
-  List<HomeItemResponse > tasks = [];
+  List<HomeItemPhotoResponse> tasks = [];
   void getListe()
   async {
     try {
-      tasks = await home();
+      tasks = await homePhoto();
       setState(() {});
     } catch (e) {
       ScaffoldMessenger.of(context)
@@ -87,7 +88,7 @@ class _PageAccueil extends State<AccueilPage> with WidgetsBindingObserver{
                         builder: (context) => ConsultationPage(task: tasks[index]),
                       ),
                     );},
-                    leading: SizedBox(child: Image(image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'), width: 200, height: 200,)),
+                    leading: SizedBox(child: /*Image(image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'), width: 200, height: 200,)*/ Text(tasks[index].photoId.toString())),
                     title: Text(tasks[index].name),
                     subtitle: Text(tasks[index].deadline.toIso8601String()),
                     trailing: Text(tasks[index].percentageDone.toString()),

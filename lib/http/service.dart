@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:tp1_desilets/transfer/account.dart';
 import 'package:tp1_desilets/transfer/task.dart';
 import 'package:logging/logging.dart';
@@ -151,14 +154,35 @@ Future<TaskDetailPhotoResponse> detailTaskPhoto(int taskId) async {
     rethrow;
   }
 }
-  Future<String> postPhoto(int taskId, MultipartFile file) async {
+  Future<String> postPhoto(File file, int taskID) async {
     try{
-      var response = await SingletonDio.getDio().get('$baseUrl/file');
-      print(response);
-      return response.toString();
+      FormData formData = FormData.fromMap({
+        "file": await MultipartFile.fromFile(file.path, filename: "image$taskID"),
+        "taskID" : taskID
+      });
+
+      var response = await SingletonDio.getDio().post('$baseUrl/file', data: formData);
+      print(response.data);
+      return "";
     }
     catch (e) {
       print(e);
       rethrow;
     }
   }
+
+  Future<Uint8List> taskPhoto(int id)
+async {
+  try{
+
+    var response = await SingletonDio.getDio().get('$baseUrl/file/$id');
+    var JSON = response.data;
+    print(response);
+    return response as Uint8List;
+  }
+  catch (e) {
+    print(e);
+    rethrow;
+  }
+}
+
