@@ -20,7 +20,7 @@ class ConsultationPage extends StatefulWidget {
 
 
 
-class _ConsultationPage extends State<ConsultationPage> {
+class _ConsultationPage extends State<ConsultationPage> with WidgetsBindingObserver {
   final pourcentageTextController = TextEditingController();
   final picker = ImagePicker();
   var imageTask;
@@ -35,6 +35,21 @@ class _ConsultationPage extends State<ConsultationPage> {
     setState(() {});
   }
 
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      getImage();
+      setState(() {});
+    } else if (state == AppLifecycleState.paused) {
+      //Sauvegarder les infos?
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -5,7 +5,7 @@ import 'package:tp1_desilets/transfer/account.dart';
 import 'package:tp1_desilets/vue_accueil.dart';
 import 'http/service.dart';
 import 'generated/l10n.dart';
-
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 class InscriptionPage extends StatefulWidget {
   const InscriptionPage({super.key});
 
@@ -17,6 +17,8 @@ class _InscriptionPageState extends State<InscriptionPage> {
   final usernameTextController = TextEditingController();
   final passwordTextController = TextEditingController();
   final passwordConfirmTextController = TextEditingController();
+  bool loading = false;
+  //TODO Désactiver les boutons pendant le loading.
   @override
   Widget build(BuildContext context) {
 
@@ -43,6 +45,9 @@ class _InscriptionPageState extends State<InscriptionPage> {
                     }
                     else{
                       try {
+                        setState(() {
+                          loading = true;
+                        });
                         SignupRequest request = SignupRequest();
                         request.username = usernameTextController.text;
                         request.password = passwordTextController.text;
@@ -75,10 +80,19 @@ class _InscriptionPageState extends State<InscriptionPage> {
                             //TODO  manque erreur reseau.
                         }
                       }
+                      setState(() {
+                        loading = false;
+                      });
                     }
                   }
                 },
                 child: Text(S.of(context).pageInscriptionTitre)
+            ),
+            Visibility(
+              child:LoadingAnimationWidget.staggeredDotsWave(
+                  color: Colors.white,
+                  size: 200),
+              visible: loading,
             ),
           ],
         ),

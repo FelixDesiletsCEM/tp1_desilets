@@ -5,6 +5,7 @@ import 'package:tp1_desilets/vue_consultation.dart';
 import 'http/service.dart';
 import 'tiroir_nav.dart';
 import 'generated/l10n.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class AccueilPage extends StatefulWidget {
   const AccueilPage({super.key});
@@ -14,6 +15,8 @@ class AccueilPage extends StatefulWidget {
 
 class _PageAccueil extends State<AccueilPage> with WidgetsBindingObserver{
   final stopwatch = Stopwatch();
+  bool loading = false;
+  //TODO Désactiver les boutons pendant le loading.
   List<HomeItemPhotoResponse> tasks = [];
   void getListe()
   async {
@@ -45,6 +48,7 @@ class _PageAccueil extends State<AccueilPage> with WidgetsBindingObserver{
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
       stopwatch.stop();
+      getListe();
       /*ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
@@ -73,15 +77,25 @@ class _PageAccueil extends State<AccueilPage> with WidgetsBindingObserver{
                 onPressed: ()
                 {
                   getListe();
-                  setState(() {});
+                  setState(() {
+                    loading = true;
+                  });
                   },
                 child: Text(S.of(context).pageAccueilActualiserListe)),
+            Visibility(
+              child:LoadingAnimationWidget.staggeredDotsWave(
+                  color: Colors.white,
+                  size: 200),
+              visible: loading,
+            ),
             SizedBox(
               height: 200.0,
               child: ListView.builder(
                 itemCount: tasks.length,
                 itemBuilder: (context, index) {
+                  //TODO Faire le loading, désactiver les contrôles.
                   return ListTile(
+
                     onTap: (){Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -93,7 +107,9 @@ class _PageAccueil extends State<AccueilPage> with WidgetsBindingObserver{
                     subtitle: Text(tasks[index].deadline.toIso8601String()),
                     trailing: Text(tasks[index].percentageDone.toString()),
                   );
+
                 },
+
               )
             )
           ],

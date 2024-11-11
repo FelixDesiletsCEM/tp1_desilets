@@ -7,7 +7,7 @@ import 'package:tp1_desilets/transfer/account.dart';
 import 'package:tp1_desilets/vue_accueil.dart';
 import 'package:tp1_desilets/widgets/bouton_navigation.dart';
 import 'generated/l10n.dart';
-
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class ConnexionPage extends StatefulWidget {
   const ConnexionPage({super.key});
@@ -19,6 +19,8 @@ class ConnexionPage extends StatefulWidget {
 class _ConnexionPageState extends State<ConnexionPage> {
   final usernameTextController = TextEditingController();
   final passwordTextController = TextEditingController();
+  bool loading = false;
+  //TODO Désactiver les boutons pendant le loading.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,9 +40,14 @@ class _ConnexionPageState extends State<ConnexionPage> {
                 controller: passwordTextController,
                 decoration: InputDecoration(hintText: S.of(context).pageConnexionMotDePasse)
             ),
+
             TextButton(
                 onPressed: () async {
                    {
+                     setState(() {
+                       loading = true;
+                     });
+                     //TODO Sauvegarder la session dans un cookie, pour quand l'app ferme.
                     try {
                       SigninRequest request = SigninRequest();
                       request.username = usernameTextController.text;
@@ -49,6 +56,7 @@ class _ConnexionPageState extends State<ConnexionPage> {
                       if (kDebugMode) {
                         print(reponse);
                       }
+
                     } on DioException catch (e) {
                       String message = e.response.toString();
                       if (kDebugMode) {
@@ -57,6 +65,9 @@ class _ConnexionPageState extends State<ConnexionPage> {
                       ScaffoldMessenger.of(context)
                           .showSnackBar(SnackBar(content: Text(S.of(context).NetworkError)));
                     }
+                     setState(() {
+                       loading = false;
+                     });
                   }
                   Navigator.push(
                     context,
@@ -66,6 +77,13 @@ class _ConnexionPageState extends State<ConnexionPage> {
                   );},
                 child: Text(S.of(context).pageConnexionConnexion)
             ),
+            Visibility(
+                child:LoadingAnimationWidget.staggeredDotsWave(
+              color: Colors.white,
+              size: 200),
+                    visible: loading,
+            ),
+
             bouton_navigation(
                 texte: S.of(context).pageInscriptionTitre,
                 targetPage: const InscriptionPage(),
