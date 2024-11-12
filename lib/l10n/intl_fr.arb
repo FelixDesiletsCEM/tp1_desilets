@@ -15,10 +15,12 @@
   "pageConsultationPourcentageCompletion": "Pourcentage de complétion: ",
   "pageConsultationPourcentageTemps": "Pourcentage du temps écoulé: ",
   "pageConsultationTitre": "Consultation",
-
+  "pageConsultationImageChoisie": "l'image a ete choisie ",
+  "pageConsultationChangerImage": "Changer l'image",
   "pageCreationAjoutTache": "Ajouter la tache",
   "pageCreationNomTache": "Nom de la tache",
   "pageCreationTitre": "Creation",
+  "pageCreationEntrerDate": "Entrez la date",
   "SuppressionTache": "Supprimer",
   "pageInscriptionConfirmation": "Confirmer le mot de passe",
   "pageInscriptionTitre": "Inscription",

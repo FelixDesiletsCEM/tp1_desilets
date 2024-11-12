@@ -18,7 +18,6 @@ class _InscriptionPageState extends State<InscriptionPage> {
   final passwordTextController = TextEditingController();
   final passwordConfirmTextController = TextEditingController();
   bool loading = false;
-  //TODO Désactiver les boutons pendant le loading.
   @override
   Widget build(BuildContext context) {
 
@@ -36,7 +35,7 @@ class _InscriptionPageState extends State<InscriptionPage> {
             TextField(decoration: InputDecoration(hintText: S.of(context).pageConnexionMotDePasse), controller: passwordTextController),
             TextField(decoration: InputDecoration(hintText: S.of(context).pageInscriptionConfirmation), controller: passwordConfirmTextController),
             OutlinedButton(
-                onPressed: () async {
+                onPressed: loading? null: () async {
                   {
                     if(passwordTextController.text != passwordConfirmTextController.text)
                     {
@@ -90,7 +89,7 @@ class _InscriptionPageState extends State<InscriptionPage> {
             ),
             Visibility(
               child:LoadingAnimationWidget.staggeredDotsWave(
-                  color: Colors.white,
+                  color: Colors.black,
                   size: 200),
               visible: loading,
             ),

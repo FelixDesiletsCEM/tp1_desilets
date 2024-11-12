@@ -15,11 +15,15 @@
   "pageConsultationPourcentageCompletion": "Percentage of completion: ",
   "pageConsultationPourcentageTemps": "Percentage of elpapsed time: ",
   "pageConsultationTitre": "Consultation",
+  "pageConsultationImageChoisie": "The image has been chosen",
+  "pageConsultationChangerImage": "Change picture",
 
   "pageCreationAjoutTache": "Add task",
   "pageCreationNomTache": "Task name",
   "pageCreationTitre": "Creation",
+  "pageCreationEntrerDate": "Enter date",
   "SuppressionTache": "Delete",
+
   "pageInscriptionConfirmation": "Confirm password",
   "pageInscriptionTitre": "Inscription",
   "pageInscriptionMotDePasseDifferent": "Passwords don't match.",

@@ -11,7 +11,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
+//TODO Utiliser des flex pour que l'app marche peu importe l'orientation.
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

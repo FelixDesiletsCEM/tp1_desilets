@@ -190,6 +190,26 @@ class S {
     );
   }
 
+  /// `The image has been chosen`
+  String get pageConsultationImageChoisie {
+    return Intl.message(
+      'The image has been chosen',
+      name: 'pageConsultationImageChoisie',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change picture`
+  String get pageConsultationChangerImage {
+    return Intl.message(
+      'Change picture',
+      name: 'pageConsultationChangerImage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Add task`
   String get pageCreationAjoutTache {
     return Intl.message(
@@ -215,6 +235,16 @@ class S {
     return Intl.message(
       'Creation',
       name: 'pageCreationTitre',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter date`
+  String get pageCreationEntrerDate {
+    return Intl.message(
+      'Enter date',
+      name: 'pageCreationEntrerDate',
       desc: '',
       args: [],
     );

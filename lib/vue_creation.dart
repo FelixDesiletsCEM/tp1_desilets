@@ -17,8 +17,8 @@ class _CreationPage extends State<CreationPage> {
   final tasknameTextController = TextEditingController();
   final passwordTextController = TextEditingController();
   final dateController = TextEditingController();
-
-  DateTime deadline = DateTime.now();
+  bool loading = false;
+  DateTime deadline = DateTime.utc(1, 1, 1, 1,1,1);
   @override
   Widget build(BuildContext context) {
 
@@ -38,9 +38,9 @@ class _CreationPage extends State<CreationPage> {
             ),
             TextField(
                 controller: dateController, //editing controller of this TextField
-                decoration: const InputDecoration(
+                decoration:  InputDecoration(
                     icon: Icon(Icons.calendar_today), //icon of text field
-                    labelText: "Enter Date" //label text of field
+                    labelText: deadline == DateTime.utc(1, 1, 1, 1,1,1)? S.of(context).pageCreationEntrerDate : deadline.toString() //label text of field
                 ),
                 readOnly: true,  // when true user cannot edit text
                 onTap: () async {
@@ -53,10 +53,13 @@ class _CreationPage extends State<CreationPage> {
 
                   );
                   deadline = pickedDate!;
+                  setState(() {});
                 }
-            ),
-            TextButton(
-                onPressed: () async {/*Requête puis écran accueil*/
+
+                ),
+            OutlinedButton(
+                onPressed: loading? null: () async {
+                  loading = true;
                   try {
                     AddTaskRequest request = AddTaskRequest(tasknameTextController.text, deadline);
                     var reponse = await addTask(request);
@@ -70,7 +73,8 @@ class _CreationPage extends State<CreationPage> {
                     MaterialPageRoute(
                       builder: (context) => const AccueilPage(),
                     ),
-                  );},
+                  );
+                  loading = false;},
                 child: Text(S.of(context).pageCreationAjoutTache)
             )
           ],

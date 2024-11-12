@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:tp1_desilets/transfer/photo.dart';
 import 'package:tp1_desilets/transfer/task.dart';
@@ -14,12 +15,12 @@ class AccueilPage extends StatefulWidget {
 }
 
 class _PageAccueil extends State<AccueilPage> with WidgetsBindingObserver{
-  final stopwatch = Stopwatch();
+  //final stopwatch = Stopwatch();
   bool loading = false;
-  //TODO Désactiver les boutons pendant le loading.
   List<HomeItemPhotoResponse> tasks = [];
   void getListe()
   async {
+    loading = true;
     try {
       tasks = await homePhoto();
       setState(() {});
@@ -27,7 +28,7 @@ class _PageAccueil extends State<AccueilPage> with WidgetsBindingObserver{
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(S.of(context).NetworkError)));
     }
-
+    loading = false;
   }
 
 
@@ -47,17 +48,9 @@ class _PageAccueil extends State<AccueilPage> with WidgetsBindingObserver{
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
-      stopwatch.stop();
       getListe();
-      /*ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-              'On est parti pendant ${stopwatch.elapsed.inSeconds} secondes'),
-        ),
-      );*/
-      stopwatch.reset();
-    } else if (state == AppLifecycleState.paused) {
-      stopwatch.start();
+      setState(() {});
+
     }
   }
   @override
@@ -73,8 +66,8 @@ class _PageAccueil extends State<AccueilPage> with WidgetsBindingObserver{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            TextButton(
-                onPressed: ()
+            OutlinedButton(
+                onPressed: loading? null: ()
                 {
                   getListe();
                   setState(() {
@@ -84,32 +77,32 @@ class _PageAccueil extends State<AccueilPage> with WidgetsBindingObserver{
                 child: Text(S.of(context).pageAccueilActualiserListe)),
             Visibility(
               child:LoadingAnimationWidget.staggeredDotsWave(
-                  color: Colors.white,
+                  color: Colors.black,
                   size: 200),
               visible: loading,
             ),
-            SizedBox(
-              height: 200.0,
+            Expanded(
               child: ListView.builder(
                 itemCount: tasks.length,
                 itemBuilder: (context, index) {
-                  //TODO Faire le loading, désactiver les contrôles.
                   return ListTile(
-
                     onTap: (){Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => ConsultationPage(task: tasks[index]),
                       ),
                     );},
-                    leading: SizedBox(child: /*Image(image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'), width: 200, height: 200,)*/ Text(tasks[index].photoId.toString())),
+
+                    leading: CachedNetworkImage(
+                      imageUrl: "http://10.0.2.2:8080/file/${tasks[index].photoId}",
+                      placeholder: (context, url) => CircularProgressIndicator(),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
+                    ),
                     title: Text(tasks[index].name),
                     subtitle: Text(tasks[index].deadline.toIso8601String()),
                     trailing: Text(tasks[index].percentageDone.toString()),
                   );
-
                 },
-
               )
             )
           ],

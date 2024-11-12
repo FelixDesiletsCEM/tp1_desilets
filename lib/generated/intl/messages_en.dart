@@ -40,8 +40,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "pageConnexionNom": MessageLookupByLibrary.simpleMessage("Username"),
         "pageConnexionTitre":
             MessageLookupByLibrary.simpleMessage("Connection"),
+        "pageConsultationChangerImage":
+            MessageLookupByLibrary.simpleMessage("Change picture"),
         "pageConsultationEcheance":
             MessageLookupByLibrary.simpleMessage("Deadline"),
+        "pageConsultationImageChoisie":
+            MessageLookupByLibrary.simpleMessage("The image has been chosen"),
         "pageConsultationModifier":
             MessageLookupByLibrary.simpleMessage("Edit the task"),
         "pageConsultationNomTache":
@@ -57,6 +61,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Consultation"),
         "pageCreationAjoutTache":
             MessageLookupByLibrary.simpleMessage("Add task"),
+        "pageCreationEntrerDate":
+            MessageLookupByLibrary.simpleMessage("Enter date"),
         "pageCreationNomTache":
             MessageLookupByLibrary.simpleMessage("Task name"),
         "pageCreationTitre": MessageLookupByLibrary.simpleMessage("Creation"),

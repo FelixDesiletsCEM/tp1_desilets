@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -23,15 +24,10 @@ class ConsultationPage extends StatefulWidget {
 class _ConsultationPage extends State<ConsultationPage> with WidgetsBindingObserver {
   final pourcentageTextController = TextEditingController();
   final picker = ImagePicker();
-  var imageTask;
-  getImage()
-  async {
-    imageTask = await taskPhoto(widget.task.photoId);
-  }
+  bool loading = false;
   @override
   void initState() {
     super.initState();
-    getImage();
     setState(() {});
   }
 
@@ -44,10 +40,10 @@ class _ConsultationPage extends State<ConsultationPage> with WidgetsBindingObser
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
-      getImage();
       setState(() {});
     } else if (state == AppLifecycleState.paused) {
-      //Sauvegarder les infos?
+      //TODO Sauvegarder les infos? Pour le refresh.
+
     }
   }
   @override
@@ -62,16 +58,20 @@ class _ConsultationPage extends State<ConsultationPage> with WidgetsBindingObser
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            imageTask==null? Image(image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg')):
-            Image.memory(imageTask, width: 200, height: 200),
-            TextButton(onPressed: ()async {
+            Expanded(child: CachedNetworkImage(
+              imageUrl: "http://10.0.2.2:8080/file/${widget.task.photoId}" ,
+              placeholder: (context, url) => CircularProgressIndicator(),
+              errorWidget: (context, url, error) => Icon(Icons.error),
+            )),
+            Expanded(child:
+            OutlinedButton(onPressed: loading? null: ()async {
+              loading = true;
               try{
                 final pickedFile = await picker.pickImage(source: ImageSource.gallery);
                 if (pickedFile != null) {
-                  print("l'image a ete choisie ${pickedFile.path}");
+                  print(S.of(context).pageConsultationImageChoisie + pickedFile.path);
                   var reponse = await postPhoto(File(pickedFile.path),  widget.task.id);
                   print(reponse);
-                  getImage();
                   setState(() {});
                 }}
               on DioException catch (e)
@@ -79,17 +79,29 @@ class _ConsultationPage extends State<ConsultationPage> with WidgetsBindingObser
                 String message = e.response.toString();
                 ScaffoldMessenger.of(context)
                     .showSnackBar( SnackBar(content: Text(message)));
-              setState(() {});
-              }}, child: Text("Change image")),
+                //TODO Quand on appui, l'image change.
+                setState(() {});
+              }
+              loading = false;}, child: Text(S.of(context).pageConsultationChangerImage)),
+            ),
+            Expanded(child:
             Text('${S.of(context).pageConsultationNomTache} ${widget.task.name}'),
-            Text("${S.of(context).pageConsultationEcheance} ${widget.task.name}"),
+            ),
+      Expanded(child:
             Text("${S.of(context).pageConsultationPourcentageCompletion} ${widget.task.percentageDone}"),
+      ),
+      Expanded(child:
             Text("${S.of(context).pageConsultationPourcentageTemps} ${widget.task.percentageDone}"),
+      ),
+      Expanded(child:
             TextField(
                 controller: pourcentageTextController,
                 decoration: InputDecoration(hintText: S.of(context).pageConsultationNouvelleValeur)
             ),
-            TextButton(onPressed: ()async{
+      ),
+      Expanded(child:
+            OutlinedButton(onPressed: loading? null: ()async{
+              loading = true;
               try {
                 ProgressEvent request = ProgressEvent(int.parse(pourcentageTextController.text), DateTime.now());
                 var reponse = await editTask(request, super.widget.task.id);
@@ -101,6 +113,7 @@ class _ConsultationPage extends State<ConsultationPage> with WidgetsBindingObser
                 ScaffoldMessenger.of(context)
                     .showSnackBar( SnackBar(content: Text(message)));
               }
+              loading = false;
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -108,7 +121,9 @@ class _ConsultationPage extends State<ConsultationPage> with WidgetsBindingObser
                 ),
               );
             }, child: Text(S.of(context).pageConsultationModifier)),
-          TextButton(onPressed: (){}, child: Text(S.of(context).SuppressionTache))
+      ),
+      Expanded(child:
+          OutlinedButton(onPressed: loading? null: (){}, child: Text(S.of(context).SuppressionTache)))
           ],
         ),
       ),

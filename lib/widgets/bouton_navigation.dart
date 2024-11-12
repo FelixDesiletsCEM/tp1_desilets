@@ -13,7 +13,7 @@ class bouton_navigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return TextButton(
+    return OutlinedButton(
       onPressed: () {
         Navigator.push(
           context,

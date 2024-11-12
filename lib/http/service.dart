@@ -174,15 +174,13 @@ Future<TaskDetailPhotoResponse> detailTaskPhoto(int taskId) async {
   Future<Uint8List> taskPhoto(int id)
 async {
   try{
-
     var response = await SingletonDio.getDio().get('$baseUrl/file/$id');
     var JSON = response.data;
     print(response);
-    return response as Uint8List;
+    return JSON;
   }
   catch (e) {
     print(e);
     rethrow;
   }
 }
-
